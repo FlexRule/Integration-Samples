@@ -1,0 +1,23 @@
+<Flow name="FlowRuleFlow" version="1.0.0.0">
+    <Declaration>
+        <Define name="car" direction="InOut" />
+    </Declaration>
+    <Nodes>
+        <Start name="Start1">
+            <Transition name="Transition1" to="Activity1" />
+        </Start>
+        <End name="End1" />
+        <Activity name="Activity1">
+            <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                <ProcSource uri="LoadHighRiskModels_New.xml" />
+            </CallProc>
+            <Transition name="Transition2" to="Activity2" />
+        </Activity>
+        <Activity name="Activity2">
+            <CallDrd contextMode="Shared">
+                <DrdSource uri="Car Premium.xml" />
+            </CallDrd>
+            <Transition name="Transition3" to="End1" />
+        </Activity>
+    </Nodes>
+</Flow>

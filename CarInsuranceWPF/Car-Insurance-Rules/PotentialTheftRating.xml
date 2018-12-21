@@ -1,0 +1,47 @@
+<DecisionTable name="Define potential theft rating" processAll="True">
+    <Declaration>
+        <Define name="car" direction="In" />
+        <Define name="probList" direction="In" />
+    </Declaration>
+    <Glossary>
+        <GlossarySource uri="Glossaries\Rating-BusinessGlossary.xml" />
+    </Glossary>
+    <Columns>
+        <Condition name="Car is listed in &quot;High Theft Probability Auto&quot;" term="Car is listed in HTPA" />
+        <Condition name="Car is Convertible" term="Is Convertible" />
+        <Condition name="Price" term="Price" />
+        <Action name="Theft Rating" term="Theft Rating" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value></Value>
+            <Value>true</Value>
+            <Value></Value>
+            <Value>High</Value>
+        </Row>
+        <Row>
+            <Value></Value>
+            <Value></Value>
+            <Value>&gt;= 45000</Value>
+            <Value>High</Value>
+        </Row>
+        <Row>
+            <Value>true</Value>
+            <Value></Value>
+            <Value></Value>
+            <Value>High</Value>
+        </Row>
+        <Row>
+            <Value>false</Value>
+            <Value></Value>
+            <Value>[20000; 45000]</Value>
+            <Value>Moderate</Value>
+        </Row>
+        <Row>
+            <Value>false</Value>
+            <Value></Value>
+            <Value>&lt; 20000</Value>
+            <Value>Low</Value>
+        </Row>
+    </Data>
+</DecisionTable>

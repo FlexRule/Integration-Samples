@@ -1,0 +1,20 @@
+﻿<Procedure name="findNameAge" enabled="true">
+  <Declaration>
+    <Using path="System.Console"/>
+    <Using path="System.Int32"/>
+
+    <Define name="personName" direction="in"/>
+    <Define name="age" direction="out"/>
+  </Declaration>
+
+  <Scope>
+
+    <CallProc resultCopyMode="AddOut" contextMode="New">
+      <ProcSource uri="GetAge.xml" />
+      
+      <Param name="fullname" value="personName"/>
+      
+    </CallProc>
+
+  </Scope>
+</Procedure>

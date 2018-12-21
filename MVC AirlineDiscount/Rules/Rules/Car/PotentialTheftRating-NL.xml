@@ -1,0 +1,69 @@
+<Natural name="Potential theft rating calculation">
+    <Glossary>
+        <GlossarySource uri="Glossaries\Rating-BusinessGlossary.xml" />
+    </Glossary>
+    <Dsl>given car, probList
+
+
+when  
+	r1 and
+	r2 and 
+	r3 and
+	r4 and
+	r5
+end	
+
+
+when r1
+	Car is Convertible 
+then
+	Theft Rating is High
+end
+
+
+when r2
+	Car is listed in HTPA and
+	Price ge 45000 
+	
+then
+	Theft Rating is High
+end
+
+
+when r3
+	Car is listed in HTPA
+then
+	Theft Rating is High
+end
+
+ 
+when r4
+	Car is listed in HTPA is  false and
+	Price is [20000;45000]
+then 
+	Theft Rating is Low
+end
+
+when r5
+	Car is not listed in HTPA and
+	Price &lt; 20000
+then
+	Theft Rating is low
+end
+
+
+when Car is not listed in HTPA
+	Car is listed in HTPA is false
+end
+
+
+
+
+
+
+
+
+
+
+</Dsl>
+</Natural>

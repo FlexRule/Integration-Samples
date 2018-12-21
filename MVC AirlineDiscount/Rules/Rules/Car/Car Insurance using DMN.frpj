@@ -1,0 +1,154 @@
+<Designer>
+    <Project>
+        <Name>Car Insurance using DMN</Name>
+        <Path>D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Samples\Car.rules.DMN - Full</Path>
+        <Description></Description>
+        <Folders>
+            <Path>TestData</Path>
+            <Path>Publish Profiles</Path>
+            <Path>Glossaries</Path>
+            <Path>Tests</Path>
+            <Path>Macros</Path>
+        </Folders>
+    </Project>
+    <Files>
+        <Add rule="TestData\flow-input.xml" help="flow-input.xml" handler="FlexRule.Designer.ProceduralEngine.ProcedureTreeFormHandler, FlexRule.Designer.ProceduralEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="TestData\drd-input.xml" help="drd-input.xml" handler="FlexRule.Designer.ProceduralEngine.ProcedureTreeFormHandler, FlexRule.Designer.ProceduralEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Auto.xml" help="Auto.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Base.xml" help="Base.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="PotentialOccupantInjuryRating.xml" help="PotentialOccupantInjuryRating.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="PotentialTheftRating.xml" help="PotentialTheftRating.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="RuleFlow.xml" help="RuleFlow.xml" handler="FlexRule.Designer.RuleFlow.RuleFlowFormHandler, FlexRule.Designer.FlowEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="LoadHighRiskModels_New.xml" help="LoadHighRiskModels_New.xml" handler="FlexRule.Designer.ProceduralEngine.ProcedureTreeFormHandler, FlexRule.Designer.ProceduralEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Auto-Tree.xml" help="Auto-Tree.xml" handler="FlexRule.Designer.ValidationEngine.ValidationTreeFormHandler, FlexRule.Designer.ValidationEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Auto-no-style.xml" help="Auto-no-style.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="DRD-With-Tree.xml" help="DRD-With-Tree.xml" handler="FlexRule.Designer.DMN.DrgFormHandler, FlexRule.Designer.DMN, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="DRD.xml" help="DRD.xml" handler="FlexRule.Designer.DMN.DrgFormHandler, FlexRule.Designer.DMN, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Publish Profiles\DRD.publish.generated.xml" help="DRD.publish.generated.xml" handler="FlexRule.Designer.Deployment.DeploymentTreeFormHandler, FlexRule.Designer.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Publish Profiles\RuleFlow.publish.generated.xml" help="RuleFlow.publish.generated.xml" handler="FlexRule.Designer.Deployment.DeploymentTreeFormHandler, FlexRule.Designer.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="SafetyDT.xml" help="SafetyDT.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="PotentialTheftRating-NL.xml" help="PotentialTheftRating-NL.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Procedure.xml" help="Procedure.xml" handler="FlexRule.Designer.ProceduralEngine.ProcedureTreeFormHandler, FlexRule.Designer.ProceduralEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="DRD-With-Tree-NL.xml" help="DRD-With-Tree-NL.xml" handler="FlexRule.Designer.DMN.DrgFormHandler, FlexRule.Designer.DMN, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="NaturalLanguage.xml" help="NaturalLanguage.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Glossaries\Rating-BusinessGlossary.xml" help="Rating-BusinessGlossary.xml" handler="FlexRule.Designer.NaturalLanguage.GlossaryFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Publish Profiles\DRD-With-Tree-NL.publish.generated.xml" help="DRD-With-Tree-NL.publish.generated.xml" handler="FlexRule.Designer.Deployment.DeploymentTreeFormHandler, FlexRule.Designer.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Publish Profiles\PotentialOccupantInjuryRating.publish.generated.xml" help="PotentialOccupantInjuryRating.publish.generated.xml" handler="FlexRule.Designer.Deployment.DeploymentTreeFormHandler, FlexRule.Designer.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="CarValidation.xml" help="CarValidation.xml" handler="FlexRule.Designer.ValidationEngine.ValidationTreeFormHandler, FlexRule.Designer.ValidationEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="RuleFlow-with-Validation.xml" help="RuleFlow-with-Validation.xml" handler="FlexRule.Designer.RuleFlow.RuleFlowFormHandler, FlexRule.Designer.FlowEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="TestData\flow-input-invalid-data.xml" help="flow-input-invalid-data.xml" handler="FlexRule.Designer.ProceduralEngine.ProcedureTreeFormHandler, FlexRule.Designer.ProceduralEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Tests\TestCase-Hyundai.xml" help="TestCase-Hyundai.xml" handler="FlexRule.Designer.Tester.TestCaseTreeFormHandler, FlexRule.Designer.Tester, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Macros\Run DRD.xml" help="Run DRD.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Macros\Run Flow.xml" help="Run Flow.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Macros\Run Flow with Invalid Data.xml" help="Run Flow with Invalid Data.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="Macros\Run Flow with Invalid Data - Script.xml" help="Run Flow with Invalid Data - Script.xml" handler="FlexRule.Designer.NaturalLanguage.DslFormHandler, FlexRule.Designer.NaturalLanguage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+        <Add rule="DiscountDT.xml" help="DiscountDT.xml" handler="FlexRule.Designer.DecisionTable.SpreadSheetFormHandler, FlexRule.Designer.DecisionTable, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" />
+    </Files>
+    <References>
+        <Add assembly="bin\Car.Library.dll" />
+    </References>
+    <ProjectProviders>
+        <Builders>
+            <Add assembly="FlexRule.Designer.ProceduralEngine.dll" type="FlexRule.Designer.ProceduralEngine.ElementItemBuilderBuiltinElementStrategy" description="Default commands of procedural rule" />
+            <Add assembly="FlexRule.Designer.FlowEngine.dll" type="FlexRule.Designer.RuleFlow.ElementItemBuilderBuiltinElementStrategy" description="Default nodes of Flow engine" />
+            <Add assembly="FlexRule.Designer.ValidationEngine.dll" type="FlexRule.Designer.ValidationEngine.ValidationEngineBuilderStrategy" description="Validation rule document" />
+            <Add assembly="FlexRule.Designer.ValidationEngine.dll" type="FlexRule.Designer.ValidationEngine.ValidatorBuilderStrategy" description="Validation engine 'Validator' command" />
+            <Add assembly="FlexRule.Designer.Core.dll" type="FlexRule.Designer.Notifications.NotificationBuilderStrategy" description="Notification command" />
+            <Add assembly="FlexRule.Designer.Deployment.dll" type="FlexRule.Designer.Deployment.DeploymentBuilderStrategy" description="Deployment Profile document" />
+            <Add assembly="FlexRule.Designer.DecisionTable.dll" type="FlexRule.Designer.DecisionTable.ElementItemBuilderBuiltinElementStrategy" description="Decision Table document builder" />
+            <Add assembly="FlexRule.Designer.DecisionTable.dll" type="FlexRule.Designer.DecisionTable.CallDecisionTableBuilderStrategy" description="Decision table engine call command" />
+            <Add assembly="FlexRule.Designer.Database.dll" type="FlexRule.Designer.Database.DatabaseBuilderStrategy" description="Commands to connect to a database" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.DecisionReqDiagramBuilderStrategy" description="Decision Modeling Notation (DMN)" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.CallDrdBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.Tester.dll" type="FlexRule.Designer.Tester.TesterBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.NaturalLanguage.dll" type="FlexRule.Designer.NaturalLanguage.ElementItemBuilderBuiltinElementStrategy" description="" />
+            <Add assembly="FlexRule.Designer.NaturalLanguage.dll" type="FlexRule.Designer.NaturalLanguage.CallNaturalLanguageBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.ResourceEditor.dll" type="FlexRule.Designer.ResourceEditor.Messages.ElementItemBuilderBuiltinElementStrategy" description="" />
+            <Add assembly="FlexRule.Designer.FlowEngine.dll" type="FlexRule.Designer.RuleFlow.CallFlowBuilderStrategy" description="" />
+        </Builders>
+    </ProjectProviders>
+    <Debugger>
+        <Runtime path="D:\Arash All Works\MY_PRG\FlexRule\Runtime\Mainline\Debug" />
+        <License path="D:\Arash All Works\MY_PRG\FlexRule\Runtime\Mainline\flexrule.license.lic" />
+    </Debugger>
+    <TreeDocument>
+        <FollowIdent value="True" />
+        <ShowAttribute value="False" />
+        <ShowDescription value="False" />
+        <ShowType value="True" />
+        <ShowValue value="True" />
+        <ShowTreeLines value="True" />
+        <ShowGridLines value="True" />
+    </TreeDocument>
+    <Metadata>
+        <Template name="Knowledge Source" description="">
+            <Group name="General" order="0">
+                <Field id="f89cc7d8-c32e-4257-87f8-c57c951c279d" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="3f5daa65-1333-4a5d-ae11-42c41f64a68c" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+                <Field id="431027fc-67d0-4b4c-b704-77c349d163e4" order="0" addEmpty="False" type="ComboBoxList" label="Type">
+                    <DataSource>
+                        <Item value="Regulation" type="System.String" />
+                        <Item value="Policy" type="System.String" />
+                        <Item value="Expertise" type="System.String" />
+                        <Item value="Analytic Insight" type="System.String" />
+                        <Item value="Best Practice" type="System.String" />
+                    </DataSource>
+                </Field>
+                <Field id="6fe2507d-9828-499a-99ea-d24983802f44" order="0" addEmpty="False" type="TextBox" label="URL" />
+                <Field id="1cd9e5da-a747-4db5-aaa3-67cb0011244a" order="0" addEmpty="False" type="TextBox" label="Owner" />
+                <Field id="0a3a7b04-87d0-4984-aeca-7b9bcc786cf5" order="0" addEmpty="False" type="MultiLineTextBox" label="Complexity" />
+            </Group>
+        </Template>
+        <Template name="Information Source" description="">
+            <Group name="General" order="0">
+                <Field id="8fdc04e8-751a-4839-8c44-9d5352dcf8a7" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="06e08140-3ee9-4ef8-be1a-ff79c2e553b8" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+                <Field id="c6fd82a1-982b-4e1c-84e0-fc820987683c" order="0" addEmpty="False" type="ComboBoxList" label="Data Source">
+                    <DataSource>
+                        <Item value="Internal" type="System.String" />
+                        <Item value="External" type="System.String" />
+                        <Item value="Pooled" type="System.String" />
+                    </DataSource>
+                </Field>
+                <Field id="62850977-a5f8-4843-adf0-ea55efec6d44" order="0" addEmpty="False" type="ComboBoxList" label="Type">
+                    <DataSource>
+                        <Item value="Unstructured" type="System.String" />
+                        <Item value="Structured" type="System.String" />
+                        <Item value="Semi-structured" type="System.String" />
+                    </DataSource>
+                </Field>
+                <Field id="78952605-baf1-4481-ac52-bd92ba2d7bee" order="0" addEmpty="False" type="TextBox" label="Owner" />
+                <Field id="6f67fe0a-560a-4993-a1a1-596ec3176d9b" order="0" addEmpty="False" type="MultiLineTextBox" label="Complexity" />
+                <Field id="d18ac879-80ac-4c4c-b8eb-1666476836c9" order="0" addEmpty="False" type="TextBox" label="URL" />
+            </Group>
+        </Template>
+        <Template name="Objective" description="">
+            <Group name="General" order="0">
+                <Field id="09458c1f-be1b-48d6-a2d2-e7965eb61a09" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="e97a5d76-f287-4a1c-9176-018201693a84" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+            </Group>
+        </Template>
+        <Template name="Process" description="">
+            <Group name="General" order="0">
+                <Field id="cc0cc45d-14d6-4b95-bf99-cf3fcb90f4b2" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="32282c2b-3d34-4046-8131-475569623cc3" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+            </Group>
+        </Template>
+        <Template name="Event" description="">
+            <Group name="General" order="0">
+                <Field id="02fa8749-4e26-4750-8be9-77d391d7020a" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="9705eee9-6737-4f58-bf42-a1fb7245015a" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+            </Group>
+        </Template>
+        <Template name="System" description="">
+            <Group name="General" order="0">
+                <Field id="b9f25729-0287-41eb-a7c9-9f0f59ff031c" order="0" addEmpty="False" type="TextBox" label="Name" />
+                <Field id="dc188b5a-7ece-43db-8f83-f522459874be" order="0" addEmpty="False" type="MultiLineTextBox" label="Description" />
+            </Group>
+        </Template>
+    </Metadata>
+    <ToolboxCommands>
+        <Or name="When any of these are correct" foreColor="Green" />
+        <Validation name="Decision" foreColor="" />
+    </ToolboxCommands>
+</Designer>

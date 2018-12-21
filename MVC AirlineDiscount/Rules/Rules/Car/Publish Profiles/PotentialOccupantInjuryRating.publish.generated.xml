@@ -1,0 +1,8 @@
+<Profile name="Define potential occupant injury rating" entry="ruleset:///Define potential occupant injury rating" base="D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Debug\Car.rules.DMN - external-glossaries" contentType="ZipPackage">
+  <Area>
+    <File source="PotentialOccupantInjuryRating.xml">
+      <Map uri="Glossaries\Rating-BusinessGlossary.xml" ruleset="ruleset:///Rating Glossary" />
+    </File>
+    <File source="Glossaries\Rating-BusinessGlossary.xml" />
+  </Area>
+</Profile>

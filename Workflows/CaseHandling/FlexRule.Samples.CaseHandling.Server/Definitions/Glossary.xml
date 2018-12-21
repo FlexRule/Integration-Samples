@@ -1,0 +1,16 @@
+<Glossary name="corelib">
+  <Formula name="FindUpperManager" expression="officer.Manager != null ? officer.Manager : officer">
+      <Param name="officer"/>
+  </Formula>
+  <Formula name="DeactivateAssignment" expression="array(assignment|setProperties(Active: false))|forEach(x, repository.UpdateAssignment($context, x))|first()"/>
+  
+  <Formula name="OfficerWithNoSubordinate" expression="repository.ListOfficers()|first(x, !(x.Subordinate |any()))"/>
+  <Formula name="AssignCaseToManager" expression="assignment=RegisterAssignment(assignment.Case, FindUpperManager(assignment.Officer), assignment.FlowInstanceIdentifier)"/>
+  <Formula name="AssignCaseToUser" expression="assignment=RegisterAssignment(case, OfficerWithNoSubordinate, $context.WorkflowInstanceId)"/>
+  
+  <Formula name="RegisterAssignment" expression="array(new(Assignment)|setProperties(Case:case, Officer:officer, FlowInstanceIdentifier:fid, Active:true))|forEach(x,repository.CreateAssignment($context, x))|first()">
+    <Param name="case"/>
+    <Param name="officer"/>
+    <Param name="fid"/>
+  </Formula>
+</Glossary>

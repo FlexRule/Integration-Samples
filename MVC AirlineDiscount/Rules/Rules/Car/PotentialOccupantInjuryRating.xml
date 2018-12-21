@@ -1,0 +1,65 @@
+<DecisionTable name="Define potential occupant injury rating" processAll="False">
+  <Declaration>
+    <Define name="car" direction="In" />
+    <Using path="FlexRule.Samples.CarInsurance.AirbagType" assembly="Car.Library.dll" />
+  </Declaration>
+  <Glossary>
+    <GlossarySource uri="Glossaries\Rating-BusinessGlossary.xml" />
+  </Glossary>
+  <Columns>
+    <Condition name="Driver's Airbag" term="Has Driver's Airbag" />
+    <Condition name="Front Passenger's Airbag" term="Has Front Passenger's Airbag" />
+    <Condition name="Side Panel Airbag" term="Has Side Panel Airbag" />
+    <Condition name="Roll bar" term="Has Roll bar" />
+    <Condition name="Convertible" term="Is Convertible" />
+    <Action name="Occupant Injury Rating" term="Occupant Injury Rating" />
+    <Name name="Rule" />
+  </Columns>
+  <Data>
+    <Row>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value></Value>
+      <Value></Value>
+      <Value>High</Value>
+      <Value>R1</Value>
+    </Row>
+    <Row>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value></Value>
+      <Value></Value>
+      <Value>Moderate</Value>
+      <Value>R2</Value>
+    </Row>
+    <Row>
+      <Value></Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value></Value>
+      <Value></Value>
+      <Value>Low</Value>
+      <Value>R3</Value>
+    </Row>
+    <Row>
+      <Value></Value>
+      <Value></Value>
+      <Value></Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>ExtremelyHigh</Value>
+      <Value>R4</Value>
+    </Row>
+    <Row>
+      <Value></Value>
+      <Value></Value>
+      <Value></Value>
+      <Value></Value>
+      <Value></Value>
+      <Value>ExtremelyHigh</Value>
+      <Value>R5</Value>
+    </Row>
+  </Data>
+</DecisionTable>

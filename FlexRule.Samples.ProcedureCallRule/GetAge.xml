@@ -1,0 +1,17 @@
+﻿<Procedure name="getAge" enabled="true">
+  <Declaration>
+    <Using path="System.Int32"/>
+    <Using path="System.String"/>
+    
+    <Define name="age" direction="out"/>
+    <Define name="fullname" direction="in"/>
+  </Declaration>
+  <Scope>
+      <If condition='fullname=="Joe"'>
+        <Var name="age" value="20"/>
+        <Else>
+          <Var name="age" value="14"/>
+        </Else>
+      </If>
+  </Scope>
+</Procedure>

@@ -1,0 +1,39 @@
+<Natural name="rule name">
+    <Dsl>input car&#xD;
+&#xD;
+when main&#xD;
+@processAll false&#xD;
+&#xD;
+	test for Compact or&#xD;
+	test for Sedan or&#xD;
+	test for Luxury&#xD;
+end&#xD;
+&#xD;
+when test for Compact&#xD;
+	(car.Style != 'Compact') or ((car.Model == 'abcd') and (car.ModelYear == 1999)) or&#xD;
+	car.ModelYear == 2002&#xD;
+then&#xD;
+	increase premium by (250) amount&#xD;
+end&#xD;
+&#xD;
+&#xD;
+when test for Sedan&#xD;
+	car.Style=='Sedan'&#xD;
+then&#xD;
+	increase premium by (400) amount&#xD;
+end&#xD;
+&#xD;
+&#xD;
+when test for Luxury&#xD;
+	car.Style=='Luxury'&#xD;
+then&#xD;
+	increase premium by (500) amount&#xD;
+end&#xD;
+&#xD;
+&#xD;
+when increase premium by {n} amount&#xD;
+then&#xD;
+	car.AutoPremium += n;&#xD;
+end&#xD;
+</Dsl>
+</Natural>

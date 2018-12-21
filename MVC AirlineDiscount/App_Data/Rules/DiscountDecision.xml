@@ -1,0 +1,121 @@
+<DecisionTable name="discount percentage">
+    <Declaration>
+        <Define name="model" direction="In" />
+        <Define name="discount" direction="Out" />
+        <Using path="System.String" />
+    </Declaration>
+    <Columns>
+        <Name />
+        <Condition name="Destination" expression="String.Compare(model.Destination,$value,true)==0" />
+        <Condition name="Age" expression="GetAge(model.Birthday)" />
+        <Condition name="Is Firday or Monday" expression="(model.Departure.DayOfWeek=='Friday') || (model.Departure.DayOfWeek=='Monday')" />
+        <Condition name="Stay More than 6 Days" expression="(model.Return - model.Departure).TotalDays &gt; 6" />
+        <Action name="Discount" expression="discount" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value>R1</Value>
+            <Value></Value>
+            <Value>&lt;=2</Value>
+            <Value></Value>
+            <Value></Value>
+            <Value>100</Value>
+        </Row>
+        <Row>
+            <Value>R2</Value>
+            <Value>India</Value>
+            <Value>(2; 18)</Value>
+            <Value></Value>
+            <Value>Y</Value>
+            <Value>40</Value>
+        </Row>
+        <Row>
+            <Value>R3</Value>
+            <Value>India</Value>
+            <Value>(2; 18)</Value>
+            <Value></Value>
+            <Value>N</Value>
+            <Value>50</Value>
+        </Row>
+        <Row>
+            <Value>R4</Value>
+            <Value></Value>
+            <Value>&gt;=18</Value>
+            <Value>Y</Value>
+            <Value>N</Value>
+            <Value>0</Value>
+        </Row>
+        <Row>
+            <Value>R5</Value>
+            <Value></Value>
+            <Value>&gt;=18</Value>
+            <Value>Y</Value>
+            <Value>Y</Value>
+            <Value>10</Value>
+        </Row>
+        <Row>
+            <Value>R6</Value>
+            <Value>India</Value>
+            <Value>&gt;=18</Value>
+            <Value>N</Value>
+            <Value>Y</Value>
+            <Value>30</Value>
+        </Row>
+        <Row>
+            <Value>R7</Value>
+            <Value>India</Value>
+            <Value>&gt;=18</Value>
+            <Value>N</Value>
+            <Value>N</Value>
+            <Value>20</Value>
+        </Row>
+        <Row>
+            <Value>R8</Value>
+            <Value>Asia</Value>
+            <Value>(2; 18)</Value>
+            <Value>Y</Value>
+            <Value>Y</Value>
+            <Value>50</Value>
+        </Row>
+        <Row>
+            <Value>R9</Value>
+            <Value>Asia</Value>
+            <Value>(2; 18)</Value>
+            <Value>Y</Value>
+            <Value>N</Value>
+            <Value>40</Value>
+        </Row>
+        <Row>
+            <Value>R10</Value>
+            <Value>Asia</Value>
+            <Value>(2; 18)</Value>
+            <Value>N</Value>
+            <Value>Y</Value>
+            <Value>75</Value>
+        </Row>
+        <Row>
+            <Value>R11</Value>
+            <Value>Asia</Value>
+            <Value>(2; 18)</Value>
+            <Value>N</Value>
+            <Value>N</Value>
+            <Value>65</Value>
+        </Row>
+        <Row>
+            <Value>R12</Value>
+            <Value>Asia</Value>
+            <Value>&gt;=18</Value>
+            <Value>N</Value>
+            <Value>Y</Value>
+            <Value>35</Value>
+        </Row>
+        <Row>
+            <Value>R13</Value>
+            <Value>Asia</Value>
+            <Value>&gt;=18</Value>
+            <Value>N</Value>
+            <Value>N</Value>
+            <Value>25</Value>
+        </Row>
+    </Data>
+</DecisionTable>

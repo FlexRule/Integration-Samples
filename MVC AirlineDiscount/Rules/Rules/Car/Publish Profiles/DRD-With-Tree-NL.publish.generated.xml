@@ -1,0 +1,21 @@
+<Profile name="Premium DRD" entry="ruleset:///Premium DRD" base="D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Debug\Car.rules.DMN - external-glossaries" contentType="ZipPackage">
+  <Area>
+    <File source="DRD-With-Tree-NL.xml">
+      <Map uri="PotentialTheftRating-NL.xml" ruleset="ruleset:///Potential theft rating calculation" />
+      <Map uri="PotentialOccupantInjuryRating.xml" ruleset="ruleset:///Define potential occupant injury rating" />
+      <Map uri="Auto-no-style.xml" ruleset="ruleset:///Calculate auto premium-no style" />
+      <Map uri="Base.xml" ruleset="ruleset:///Calculate base premium" />
+      <Map uri="Auto-Tree.xml" ruleset="ruleset:///Auto Premium" />
+    </File>
+    <File source="PotentialTheftRating-NL.xml">
+      <Map uri="Glossaries\Rating-BusinessGlossary.xml" ruleset="ruleset:///Rating Glossary" />
+    </File>
+    <File source="PotentialOccupantInjuryRating.xml">
+      <Map uri="Glossaries\Rating-BusinessGlossary.xml" ruleset="ruleset:///Rating Glossary" />
+    </File>
+    <File source="Auto-no-style.xml" />
+    <File source="Base.xml" />
+    <File source="Auto-Tree.xml" />
+    <File source="Glossaries\Rating-BusinessGlossary.xml" />
+  </Area>
+</Profile>

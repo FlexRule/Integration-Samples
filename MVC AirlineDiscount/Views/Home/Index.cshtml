@@ -1,0 +1,71 @@
+﻿@model AirlineDiscount.Models.DiscountInput
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <h1>Airline Discount Program</h1>
+    <p class="lead">Please specify the bellow information and we tell you if you are eligible for our discount program.</p>
+</div>
+
+<div class="row">
+    <div class="span well" style="color: blue">
+        <h2>Discount Policy</h2>
+        <ul>
+            <li>Passengers older than 18 with destinations in India are offered a discount of 20%, as long as the departure is not on a Monday or Friday.</li>
+            <li>For destinations outside of India, passengers are offered a discount of 25%, if the departure is not on a Monday or Friday.</li>
+            <li>Passengers who stay at least 6 days at their destination receive an additional discount of 10%.</li>
+            <li>Passengers older than 2 but younger than 18 years are offered a discount of 40% for all destinations.</li>
+            <li>Children 2 and under travel for free</li>
+        </ul>
+        <a style="color:red" href="/Rules/index.html?name=discountdecision.xml" target="_new">Edit Policy Decision Definition</a>
+    </div>
+    
+</div>
+
+@using (Ajax.BeginForm("Process", "Home", null, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "processResult" }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Passenger Information</h2>
+            <p>
+                Please enter your information bellow to find out id you are eligible for discount on airfare.
+                <div class="form-group input-group-sm">
+                    @Html.LabelFor(model => model.Birthday)
+                    @Html.TextBoxFor(model => model.Birthday, new { data_format = "dd/MM/yyyy HH:mm:ss PP", @class = "form-control datepicker", placeholder = "Please select the birthday" })
+                    
+                    
+                    @Html.LabelFor(model => model.Departure)
+                    @Html.TextBoxFor(model => model.Departure, new { data_format = "dd/MM/yyyy HH:mm:ss PP", @class = "form-control datepicker", placeholder = "Please select the departure" })
+
+                    @Html.LabelFor(model => model.Return)
+                    @Html.TextBoxFor(model => model.Return, new { data_format = "dd/MM/yyyy HH:mm:ss PP", @class = "form-control datepicker", placeholder = "Please select the return" })
+
+                    @Html.LabelFor(model => model.Destination)
+                    @Html.TextBoxFor(model => model.Destination, new { @class = "form-control", placeholder = "Please Asia, India or any other country" })
+
+                </div>
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Let's Find Out</h2>
+            <p>
+                You light be eligible for a discount. Please press on the button bellow to process your eligibility criteria:
+
+                <div class="clearStyle"></div>
+                <div class="buttonContainer">
+                    <button type="submit" class="btn btn-success">I Feel Lucky!</button>
+                </div>
+            </p>
+        </div>
+
+
+        <div class="col-md-4">
+            <h2>Eligibility</h2>
+            <div id="processResult"></div>
+        </div>
+
+    </div>
+}

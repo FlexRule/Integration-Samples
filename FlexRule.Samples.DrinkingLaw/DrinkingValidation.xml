@@ -1,0 +1,48 @@
+<Validation name="Drink">
+  <Declaration>
+    <Define name="person" direction="in" />
+    <Define name="canDrink" direction="out" />
+  </Declaration>
+  <Logic name="main">
+    <Or processAll="true">
+      <Validate logic="rule1" />
+      <Validate logic="rule2" />
+      <Validate logic="rule3" />
+    </Or>
+  </Logic>
+  <Logic name="rule1">
+    <And>
+      <Check value="(person.Age) &lt;18" />
+    </And>
+    <Then>
+      <Var value="canDrink=false" />
+      <Notification>
+        <Notice message="{person.Name}! you cannot drink, because you are younger than 18!" type="Error" />
+      </Notification>
+    </Then>
+  </Logic>
+  <Logic name="rule2">
+    <And>
+      <Check value="(person.Sex)==&quot;Female&quot;" />
+      <Check value="(person.Pregnant)==true" />
+    </And>
+    <Then>
+      <Var value="canDrink=false" />
+      <Notification>
+        <Notice message="Come on! {person.Name} you are pregnant." type="Error" />
+      </Notification>
+    </Then>
+  </Logic>
+  <Logic name="rule3">
+    <And>
+      <Check value="(person.Age) &gt;18" />
+      <Check value="(person.Pregnant)==false" />
+    </And>
+    <Then>
+      <Var value="canDrink=true" />
+      <Notification>
+        <Notice message="Cheers!" type="Information" />
+      </Notification>
+    </Then>
+  </Logic>
+</Validation>

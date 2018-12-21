@@ -1,0 +1,17 @@
+﻿<Procedure name="TestProcedure" enabled="true">
+  <Declaration>
+    <Define name="person" direction="in" />
+    <Define name="inputValidationResult" direction="out" />
+
+    <Using path="System.Console"/>
+  </Declaration>
+
+
+  <Scope name="main">
+    <Validator return="inputValidationResult" contextMode="Shared">
+      <ValidatorSource uri="SampleValidationRule.xml" />
+    </Validator>
+  </Scope>
+
+  <CallMethod method="Console.WriteLine('Validation result: {0}', inputValidationResult)"/>
+</Procedure>

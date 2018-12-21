@@ -1,0 +1,72 @@
+<Workflow name="CaseHandling" version="1.0.0.0">
+    <Declaration>
+        <Define name="repository" direction="In" />
+        <Define name="case" direction="In" />
+        <Define name="caseOfficer" direction="In" />
+    </Declaration>
+    <Nodes>
+        <Start name="Start1">
+            <Transition name="Transition1" to="Activity1" />
+        </Start>
+        <End name="End1" />
+        <Activity name="Activity1">
+            <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                <ProcSource uri="ruleset://flow/activities?parameter:name=AssignToUser" />
+            </CallProc>
+            <Transition name="Transition2" to="ListenerSplit1" />
+        </Activity>
+        <ListenerSplit name="ListenerSplit1">
+            <Transition name="Transition3" to="ScopeTimeout" priority="1" />
+            <Transition name="Transition4" to="ScopeAccept" priority="2" />
+        </ListenerSplit>
+        <ListenerJoin name="ListenerJoin1">
+            <Transition name="Transition7" to="Decision1" />
+        </ListenerJoin>
+        <Scope name="ScopeTimeout" initialNode="Timeout1" finalNode="AssignActivity">
+            <Nodes>
+                <Timeout name="Timeout1" title="TimeoutInMiute" namespace="http://helpdesk/CaseHandling" timeout="00:01:00">
+                    <Transition name="Transition14" to="Activity5" />
+                </Timeout>
+                <Activity name="AssignActivity">
+                    <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                        <ProcSource uri="ruleset://flow/activities?parameter:name=AssignToManager" />
+                    </CallProc>
+                </Activity>
+                <Activity name="Activity5">
+                    <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                        <ProcSource uri="ruleset://flow/activities?parameter:name=ProcessTimeout" />
+                    </CallProc>
+                    <Transition name="Transition15" to="AssignActivity" />
+                </Activity>
+            </Nodes>
+            <Transition name="DelayedTransition" to="ListenerJoin1" />
+        </Scope>
+        <Scope name="ScopeAccept" initialNode="AcceptAction" finalNode="OwnerEmaillActivity">
+            <Nodes>
+                <Action name="AcceptAction" title="Accept" namespace="http://helpdesk/CaseHandling">
+                    <Transition name="Transition19" to="Assign1" />
+                </Action>
+                <Activity name="OwnerEmaillActivity">
+                    <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                        <ProcSource uri="ruleset://flow/activities?parameter:name=SendEmail" />
+                    </CallProc>
+                </Activity>
+                <Assign name="Assign1">
+                    <Var name="caseOfficer" value="DateTime.Now" path="Accepted" />
+                    <Transition name="Transition17" to="Assign2" />
+                </Assign>
+                <Assign name="Assign2">
+                    <Var name="caseOfficer" value="false" path="Active" />
+                    <Transition name="Transition18" to="OwnerEmaillActivity" />
+                </Assign>
+            </Nodes>
+            <Transition name="AcceptedTransition" to="ListenerJoin1" />
+        </Scope>
+        <Decision name="Decision1">
+            <Transition name="Transition8" to="ListenerSplit1" 
+                        condition="Context.History.Check(&quot;Decision1/Transition7/ListenerJoin1/DelayedTransition&quot;)" />
+            <Transition name="Transition9" to="End1" 
+                        condition="Context.History.Check(&quot;Decision1/Transition7/ListenerJoin1/AcceptedTransition&quot;)" />
+        </Decision>
+    </Nodes>
+</Workflow>

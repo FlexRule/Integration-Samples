@@ -1,0 +1,168 @@
+﻿<html>
+<head>
+    <title>FlexRule Flow Editor</title>
+    <script src="JS/jquery-2.1.4.min.js"></script>
+    <script src="JS/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/JS/jquery-ui.css">
+
+    <script src="JS/SetOps.js"></script>
+
+    <script src="FlexRule.Web.Editors/FlexRule.Core.min.js"></script>
+    <script src="FlexRule.Web.Editors/Flow/Flow.min.js"></script>
+    <link rel="stylesheet" href="FlexRule.Web.Editors/Flow/Flow.css">
+
+    <!-- bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="demo.css">
+    <script>
+
+        function LoadContent(address) {
+            // Load your logic model from your server...
+            // At this example we just put it as a web content resource.
+            // You can store your rules on database server side and/or use REST API to retrieve them
+            // Feel free to to simply replace this function to load your rules from your own storage back-end
+            var s = null;
+            jQuery.ajax({
+                type: "get",
+                dataType: "html",
+                url: address,
+                error: function (result) {
+                    return null;
+                },
+                success: function (result) {
+                    s = result;
+                },
+                async: false
+            });
+            return s;
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.flexrule.com">
+                    <span><img class="ui-icon-image" src="Images/FlexRule-black.png" /></span>
+                </a>
+                <h3 class="navbar-text">Business Rules Web Editors</h3>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                        <a href="flow-sample.html">Flow</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="dt-sample.html">Decision Table</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="nl-sample.html">Natural Language</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <h2>FlexRule Flow and Workflow - Web Editor</h2>
+        <div class="row">
+            <h4>
+                Flow and Workflow: <select id="samples">
+                    <option value="">Select a sample Flow or Workflow</option>
+                    <option value="Rules/CalculationFlow-Delivery-Notice.xml">Invoice flow with discount and delivery</option>
+                    <option value="Rules/CaseHandlingWorkflow.xml">Workflow with events and actions</option>
+                    <option value="Rules/RuleFlow-with-Validation.xml">Flow with validation and decision requirement diagram link</option>
+                </select>
+            </h4>
+
+            <div class="container">
+                <div class="" id="s1">
+
+                    <style type="text/css">
+                        .panel {
+                        }
+
+                        .flowchart {
+                            width: 100%;
+                            border: solid 1px black;
+                        }
+                    </style>
+
+                    <div class="flowchart panel">
+                        <canvas id='diagram'></canvas>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <input type="button" value="Get Flow" id="btnGetFlow" />
+            <input type="button" value="Get Flow Info" id="btnGetFlowInfo" />
+            <br />
+            <br />
+            <textarea id="flowContent" style="width: 300px; height: 100px"></textarea>
+        </div>
+    </div>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            function load(url) {
+                var container = $('#diagram')[0];
+
+                var filename = url.split("/").pop();
+                var fn = filename.substr(0, filename.lastIndexOf('.'));
+                var path = url.substr(0, url.lastIndexOf("/"));
+                var ruleContent = LoadContent(path + "/" + fn + ".xml");
+                var heplerContent = LoadContent(path + "/" + fn + ".help.xml");
+
+
+                var flow = $(container).toFlow();
+                flow.loadFlow(ruleContent, heplerContent);
+
+                flow.showToolbox({
+                    draggable: true,
+                    // location:{0, 0}
+                });
+
+                $("#btnGetFlow").click(function () {
+                    var cnt = flow.getFlow();
+                    $("#flowContent").text(cnt);
+                });
+                $("#btnGetFlowInfo").click(function () {
+                    $("#flowContent").text(flow.getFlowInfo());
+                });
+            }
+
+
+            $("#samples").change(function () {
+                if (this.value === "") {
+                    $('#diagram').replaceWith("<canvas id='diagram'></canvas>");
+                } else
+                    load(this.value);
+            });
+
+        });
+    </script>
+</body>
+</html>

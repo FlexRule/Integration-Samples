@@ -1,0 +1,35 @@
+﻿.tnav .navbar .container {
+    height: 28px;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top: 14px !important;
+    padding-bottom: 0 !important;
+    height: 28px;
+}
+
+.navbar-nav > a, .navbar-brand {
+    padding-top: 4px !important;
+    padding-bottom: 0 !important;
+    height: 30px;
+}
+
+.navbar {
+    min-height: 50px !important;
+}
+
+.h3 h3 {
+    margin-top: 10px;
+    margin-left: -100px;
+    color: red;
+}
+
+.navbar-brand > span > img {
+    height: 180%;
+    width: auto;
+    margin: 0 auto;
+}
+
+html * {
+    outline: 0 !important;
+}

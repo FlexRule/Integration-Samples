@@ -1,0 +1,38 @@
+<Flow name="Car Flow" version="1.0.0.0">
+  <Declaration>
+    <Define name="car" direction="InOut" />
+    <Define name="isValid" type="System.Boolean" direction="Out" value="false" />
+  </Declaration>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition4" to="Activity3" />
+    </Start>
+    <End name="End1" />
+    <Activity name="Activity1">
+      <CallProc contextMode="Shared" resultCopyMode="AddOut">
+        <ProcSource uri="LoadHighRiskModels_New.xml" />
+      </CallProc>
+      <Transition name="Transition2" to="Activity2" />
+    </Activity>
+    <Activity name="Activity2">
+      <CallDrd contextMode="Shared">
+        <DrdSource uri="Car Premium.xml" />
+      </CallDrd>
+      <Transition name="Transition8" to="Activity4" />
+    </Activity>
+    <Activity name="Activity3">
+      <Validator return="isValid" contextMode="Shared">
+        <ValidatorSource uri="CarValidation.xml" />
+        <Param name="car" value="car" />
+      </Validator>
+      <Transition name="Transition5" to="Decision1" />
+    </Activity>
+    <Decision name="Decision1">
+      <Transition name="Transition6" to="Activity4" condition="!isValid" />
+      <Transition name="Transition7" to="Activity1" condition="isValid" />
+    </Decision>
+    <Activity name="Activity4">
+      <Transition name="Transition9" to="End1" />
+    </Activity>
+  </Nodes>
+</Flow>

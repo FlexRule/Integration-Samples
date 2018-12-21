@@ -1,0 +1,42 @@
+<Natural>
+  <Glossary>
+    <Term name="user is business analyst" expression="user.IsAnalyst" domain="Boolean" />
+  </Glossary>
+  <Dsl>@name This is a name for this rule document
+
+/* 
+	For more information please visi http://wiki.flexrule.com/index.php?title=Designer:Building_DSL
+*/
+
+  
+/* 
+	'give' and 'input' define input parameters of the logic
+	'output' defines output parameters
+	You can difne multiple of them separated command.
+	Example: input a,b,c
+*/
+
+given user
+
+/* Logic with no name. It cannot be reused. */
+when 
+	/*
+		Put all the conditions for a logic here
+	*/
+	user is business analyst is true and
+	user uses FlexRule is true
+then
+	user.Company.Agile = true
+otherwise
+	user.Company.Agile = false
+end
+
+/* Named logic, which allows reuse in other part of the document */
+when user uses FlexRule
+	/*
+		define your logic here ... when-then-otherwise-end
+	*/
+end
+
+</Dsl>
+</Natural>

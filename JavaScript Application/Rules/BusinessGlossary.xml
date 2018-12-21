@@ -1,0 +1,5 @@
+<Glossary name="sample glossary">
+    <Term name="First name" expression="form.name" domain="String" />
+    <Term name="Last name" expression="form.family" domain="String" />
+    <Term name="Email address" expression="form.email" domain="String" />
+</Glossary>

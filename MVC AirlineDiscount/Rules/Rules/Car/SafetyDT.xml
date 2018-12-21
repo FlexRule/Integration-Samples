@@ -1,0 +1,8 @@
+<DecisionTable name="SafetyDT">
+  <Columns></Columns>
+  <Data></Data>
+  <Declaration>
+    <Define name="InputData1" direction="in" />
+    <Define name="InputData2" direction="in" />
+  </Declaration>
+</DecisionTable>

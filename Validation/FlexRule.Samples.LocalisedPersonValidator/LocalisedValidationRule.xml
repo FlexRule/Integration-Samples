@@ -1,0 +1,13 @@
+﻿<Validation name="PersonValidation">
+
+  <Logic name="check email">
+    <And>
+      <Or negate="true" messageId="EmptyEmail">
+        <Empty value="Email" />
+        <Null value="Email" />
+      </Or>
+      <Regex pattern="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" value="Email" messageId="InvalidEmail" />
+    </And>
+  </Logic>
+
+</Validation>

@@ -1,0 +1,29 @@
+<Flow name="RuleFlow" version="1.0.0.0">
+  <Declaration>
+    <Define name="cnn" direction="in"/>
+    <Define name="cars" direction="Out" />
+    <Define name="car" direction="Local" />
+  </Declaration>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition2" to="Activity1" />
+    </Start>
+    <End name="End1" />
+    <Activity name="Activity1">
+      <Database connection-ref="cnn" type="MsSql">
+        <SelectList command="select * from Thefts" return="cars" multi="True" expando="True" />
+      </Database>
+      <Transition name="Transition4" to="Loop1" />
+    </Activity>
+    <Loop name="Loop1" on="cars" childName="car">
+      <Nodes>
+        <Activity name="Activity2">
+          <CallDecisionTable contextMode="Shared">
+            <DecisionTableSource uri="YearDiscount.xml" />
+          </CallDecisionTable>
+        </Activity>
+      </Nodes>
+      <Transition name="Transition5" to="End1" />
+    </Loop>
+  </Nodes>
+</Flow>

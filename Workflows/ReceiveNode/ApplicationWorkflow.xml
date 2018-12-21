@@ -1,0 +1,36 @@
+<Workflow name="Workflow Options">
+  <Declaration>
+    <Define name="app" direction="In" />
+  </Declaration>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition1" to="ListenerSplit1" />
+    </Start>
+    <End name="End1" />
+    <ListenerSplit name="ListenerSplit1">
+      <Transition name="toApprover" to="Scope1" />
+      <Transition name="toRejector" to="Scope2" />
+    </ListenerSplit>
+    <ListenerJoin name="ListenerJoin1" type="AnyOf">
+      <Transition name="Transition6" to="End1" />
+    </ListenerJoin>
+    <Scope name="Scope1" initialNode="task1" finalNode="Activity1">
+      <Nodes>
+        <Task name="task1" title="approve" displayName="Approve document">
+          <Transition name="Transition8" to="Activity1" />
+        </Task>
+        <Activity name="Activity1" expression="app.Status='Approved'" />
+      </Nodes>
+      <Transition name="Transition5" to="ListenerJoin1" />
+    </Scope>
+    <Scope name="Scope2" initialNode="task2" finalNode="Activity2">
+      <Nodes>
+        <Task name="task2" title="reject" displayName="Reject document">
+          <Transition name="Transition9" to="Activity2" />
+        </Task>
+        <Activity name="Activity2" expression="app.Status='Rejected'" />
+      </Nodes>
+      <Transition name="Transition4" to="ListenerJoin1" />
+    </Scope>
+  </Nodes>
+</Workflow>

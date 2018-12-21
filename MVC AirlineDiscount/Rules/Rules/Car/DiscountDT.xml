@@ -1,0 +1,24 @@
+<DecisionTable name="Discount policy" processAll="True">
+    <Declaration>
+        <Define name="car" direction="In" />
+        <Define name="probList" direction="In" />
+        <Using function="True" path="ruleset:///Premium DRD" name="CalculatePremium" />
+    </Declaration>
+    <Columns>
+        <Action name="Calculate" expression="CalculatePremium($value, probList)" />
+        <Condition name="Auto premium Discount" expression="car.AutoPremium" />
+        <Action name="Apply Discount" expression="car.AutoPremium" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value>:car</Value>
+            <Value></Value>
+            <Value></Value>
+        </Row>
+        <Row>
+            <Value></Value>
+            <Value>gt 200</Value>
+            <Value>-= (car.AutoPremium * 0.03)</Value>
+        </Row>
+    </Data>
+</DecisionTable>

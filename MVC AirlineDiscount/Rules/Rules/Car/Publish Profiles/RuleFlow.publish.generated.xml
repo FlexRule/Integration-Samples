@@ -1,0 +1,19 @@
+<Profile name="FlowRuleFlow" entry="ruleset:///FlowRuleFlow" base="D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Debug\Car.rules.DMN" contentType="ZipPackage">
+  <Area>
+    <File source="RuleFlow.xml">
+      <Map uri="LoadHighRiskModels_New.xml" ruleset="ruleset:///LoadHighRiskModels" />
+      <Map uri="DRD.xml" ruleset="ruleset:///Premium DRD" />
+    </File>
+    <File source="LoadHighRiskModels_New.xml" />
+    <File source="DRD.xml">
+      <Map uri="PotentialTheftRating.xml" ruleset="ruleset:///Define potential theft rating" />
+      <Map uri="PotentialOccupantInjuryRating.xml" ruleset="ruleset:///Define potential occupant injury rating" />
+      <Map uri="Auto.xml" ruleset="ruleset:///Calculate auto premium" />
+      <Map uri="Base.xml" ruleset="ruleset:///Calculate base premium" />
+    </File>
+    <File source="PotentialTheftRating.xml" />
+    <File source="PotentialOccupantInjuryRating.xml" />
+    <File source="Auto.xml" />
+    <File source="Base.xml" />
+  </Area>
+</Profile>

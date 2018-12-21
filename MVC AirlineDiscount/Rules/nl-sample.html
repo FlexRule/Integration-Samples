@@ -1,0 +1,158 @@
+﻿<html>
+<head>
+    <title>FlexRule Natural Language Editor</title>
+    <script src="JS/jquery-2.1.4.min.js"></script>
+
+    <script src="JS/SetOps.js"></script>
+
+    <link rel="stylesheet" href="JS/CM/lib/codemirror.css">
+
+    <script src="JS/CM/lib/codemirror.js"></script>
+    <script src="JS/CM/addon/mode/overlay.js"></script>
+    <script src="JS/CM/addon/selection/active-line.js"></script>
+
+    <script src="JS/CM/addon/scroll/simplescrollbars.js"></script>
+    <link rel="stylesheet" href="JS/CM/addon/scroll/simplescrollbars.css">
+
+    <script src="JS/CM/addon/hint/show-hint.js"></script>
+    <link rel="stylesheet" href="JS/CM/addon/hint/show-hint.css">
+    <script src="JS/CM/addon/hint/anyword-hint.js"></script>
+
+
+    <script src="FlexRule.Web.Editors/FlexRule.Core.min.js"></script>
+    <script src="JS/CM/mode/flexrule-nl/flexrule-nl.min.js"></script>
+    <script src="FlexRule.Web.Editors/NaturalLanguage/NL.min.js"></script>
+    <link rel="stylesheet" href="FlexRule.Web.Editors/NaturalLanguage/NL.css" />
+
+    <!-- bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="demo.css">
+    <script>
+
+        function LoadContent(address) {
+            // Load your logic model from your server...
+            // At this example we just put it as a web content resource.
+            // You can store your rules on database server side and/or use REST API to retrieve them
+            // Feel free to to simply replace this function to load your rules from your own storage back-end
+            var s = null;
+            jQuery.ajax({
+                type: "get",
+                dataType: "html",
+                url: address,
+                error: function (result) {
+                    return null;
+                },
+                success: function (result) {
+                    s = result;
+                },
+                async: false
+            });
+            return s;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.flexrule.com">
+                    <span><img class="ui-icon-image" src="Images/FlexRule-black.png" /></span>
+                </a><h3 class="navbar-text">Business Rules Web Editors</h3>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                        <a href="flow-sample.html">Flow</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="dt-sample.html">Decision Table</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="nl-sample.html">Natural Language</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <h2>FlexRule Natural Language - Web Editor</h2>
+        <div class="row">
+            <h4>
+                Natural Language: <select id="samples">
+                    <option value="">Select a sample Natural Language</option>
+                    <option value="Rules/car/Auto-no-style-NL.xml">Simple NL</option>
+                    <option value="Rules/car/PotentialOccupantInjuryRating-NL.xml">NL with Terms and Glossary</option>
+                </select>
+            </h4>
+
+            <div class="container">
+                <h4 id="nlName"></h4>
+                <textarea id="nl" name="nl"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <input type="button" value="Get Natural Language" id="btnGetNaturalLanguage" />
+            <br />
+            <br />
+            <textarea id="nlContent" style="width: 300px; height: 100px"></textarea>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+
+            var nl = $("#nl").toNaturalLanguage({
+                size: { width: 630, height: 500 }
+            });
+
+            function load(url) {
+                nl.clearGlossaries();
+
+                var content = LoadContent(url);
+                nl.loadNaturalLanguage(content);
+
+                var glossaries = nl.getGlossaries();
+
+                glossaries.forEach(function (uri) {
+                    var uri = "rules/car/" + uri.replace(/\\/g, '/');
+                    nl.loadGlossary(LoadContent(uri));
+                });
+
+                $('#btnGetNaturalLanguage').click(function () {
+                    var content = nl.getNaturalLanguage();
+                    $('#nlContent').val(content);
+                });
+
+                $('#nlName').text(nl.getName());
+            }
+
+
+            $("#samples").change(function () {
+                if (this.value == "") {
+                    $("#code").text("");
+                    $('#nlName').text("");
+                } else
+                    load(this.value);
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<Natural name="rule name">
+    <Dsl>given FRD;
+
+when This macro is ran 
+then
+	Make sure the debugger is stopped 
+	and  
+	Open the rule document ('DRD-With-Tree-NL.xml') 
+	and
+	Run the rule  ('DRD-With-Tree-NL.xml') 
+	with loaded data ('TestData\\car-for-DRD.dc.json')
+	and
+	Make sure parameter window is activated
+end
+
+
+when Make sure the debugger is stopped
+then
+	FRD.Debugger.Stop()
+end
+ 
+when Open the rule document {rule}
+then
+	FRD.OpenDocument(rule)
+end 
+
+when Run the rule {rule} with loaded data {data}
+then
+	FRD.Debugger.Run('DataComposer', rule, data)
+end
+
+when Debug the rule {rule} with loaded data {data}
+then
+	FRD.Debugger.Debug('DataComposer', rule, data)
+end
+
+when Make sure parameter window is activated
+then
+	FRD.ShowWindow('Parameters')
+end</Dsl>
+</Natural>

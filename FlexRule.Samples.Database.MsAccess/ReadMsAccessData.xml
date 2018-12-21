@@ -1,0 +1,21 @@
+﻿<Procedure name="PriceSubTotal" enabled="true">
+  <Declaration>
+    <Define name="list" direction="out"/>
+    <Define name="cnn" direction="out"/>
+    <Using path="System.IO.Directory" />
+
+    <Define name="name" type="System.String" direction="local"/>
+  </Declaration>
+  
+  <Scope>
+    <Var name="cnn" value='"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ Directory.GetCurrentDirectory()+ "\\DatabaseSample.mdb"' process="true"/>
+    <Database connection-ref="cnn" type="MsAccess">
+      <SelectRow command="select * from person where id = @id1 or id = @id2" multi="true" return="list">
+        <Param name="id1" type="System.Int32" value="1"/>
+        <Param name="id2" type="System.Int32" value="2"/>
+      </SelectRow>
+    </Database>
+    <Var name="name" value='(list[0]).GetValue("FName")' process="true"/>
+  </Scope>
+  
+</Procedure>

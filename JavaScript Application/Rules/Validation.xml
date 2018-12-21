@@ -1,0 +1,52 @@
+<Natural name="Form Val">
+    <Glossary>
+        <GlossarySource uri="BusinessGlossary.xml" />
+    </Glossary>
+    <Dsl>input form
+ 
+when Form data validation
+@processAll true
+
+  Check Name and
+  Check Family and
+  Check Email 
+  
+end
+
+
+when Check Name 
+
+  First name is null
+  or
+  First name is ""
+  
+then
+  Write Error ('first name is required');
+end
+
+
+when Check Family 
+  
+  Last name is null
+  or
+  Last name is empty
+then  
+  Write Error('family name (lastname) is required');
+end
+
+
+when Check Email
+ 
+  Email address is null
+  or
+  Email address is empty
+  or
+  Email address not match "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*" 
+then
+  Write Error ('Please enter a valid email address for the registration');
+end
+
+when Write Error {msg}
+  $context.WriteError(null, msg);
+end</Dsl>
+</Natural>

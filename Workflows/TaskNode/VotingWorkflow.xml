@@ -1,0 +1,50 @@
+<Workflow name="Parameterised Threshold" version="1.0.0.0">
+  <Declaration>
+    <Define name="result" direction="Out" />
+    <Define name="work" direction="Local" />
+    <Define name="threshold" direction="In" />
+  </Declaration>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition1" to="Exhibition" />
+    </Start>
+    <Task name="Exhibition" title="Going to exhibition" type="Multi" returnWork="work">
+      <Expectations>
+        <Outcome displayName="I Agree" name="Yes" description="Let's do this!" />
+        <Outcome displayName="I Disagree" name="No" description="We should not go" />
+      </Expectations>
+      <Participants>
+        <User name="Arash" lastName="Arash" firstName="Aghlara" email="arash.aghlara@flexrule.com" weight="1" />
+        <User name="Goli" lastName="Golnoosh" firstName="Tajadod" email="goli.tajadod@flexrule.com" weight="1" />
+        <User name="Rob" lastName="Rob" firstName="Roe" email="rob.roe@flexrule.com" weight="1" />
+        <Interaction policy="Vote" threshold="threshold">
+          <Outcome return="result" />
+        </Interaction>
+      </Participants>
+      <Owner>
+        <User name="Rob" lastName="Rob" firstName="Roe" email="rob.roe@flexrule.com"/>
+      </Owner>
+      <Transition name="Transition3" to="Decision1" />
+    </Task>
+    <End name="End1" />
+    <Decision name="Decision1">
+      <Transition name="Transition5" to="Activity2" condition="result==='yes'" />
+      <Transition name="Transition16" to="Activity5" />
+    </Decision>
+    <Activity name="Activity1">
+      <Transition name="Transition8" to="End1" />
+    </Activity>
+    <Activity name="Activity2">
+      <Notification>
+        <Notice message="YES! let's go and exhibit... ;)" type="Information" />
+      </Notification>
+      <Transition name="Transition15" to="Activity1" />
+    </Activity>
+    <Activity name="Activity5">
+      <Notification>
+        <Notice message="OK! May be next year..." type="Error" />
+      </Notification>
+      <Transition name="Transition17" to="Activity1" />
+    </Activity>
+  </Nodes>
+</Workflow>

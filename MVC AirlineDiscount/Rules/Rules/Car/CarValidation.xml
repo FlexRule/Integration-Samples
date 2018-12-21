@@ -1,0 +1,18 @@
+<Validation name="CarValidation" enabled="True">
+  <Declaration>
+    <Define name="car" direction="In" />
+  </Declaration>
+  <Logic name="main">
+    <And processAll="True">
+      <Null negate="True" message="Car is required" value="car" />
+      <Validate message="Car model must be provided" logic="NotNullOrEmpty" value="car.Model" />
+      <Validate message="Car made must be provided" logic="NotNullOrEmpty" value="car.Made" />
+    </And>
+  </Logic>
+  <Logic name="NotNullOrEmpty" variable="$v">
+    <Or negate="True">
+      <Null value="$v" />
+      <Empty value="$v" />
+    </Or>
+  </Logic>
+</Validation>

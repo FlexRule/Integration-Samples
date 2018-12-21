@@ -1,0 +1,40 @@
+<Decision name="Drinking age law">
+  
+  <Declaration>
+    <Define name="person" direction="in" />
+    <Define name="message" direction="out" />
+  </Declaration>
+
+  <Logic name="All logic">
+    <Or processAll="true">
+      <Validate logic="Generic check" />
+      <Validate logic="Check for females" />
+    </Or>
+  </Logic>
+
+  <Logic name="IllegalAge">
+    <And>
+      <Check value="person.Age lt 18" message="Person with less than 18 years old, cannot consume or purchase alcoholic food or alcoholic beverages."/>
+    </And>
+  </Logic>
+
+  <Logic name="Generic check" priority="200">
+    <And>
+      <Validate logic="IllegalAge"/>
+    </And>
+    <Then>
+      <Var name="message" value="&quot;message from higher priority&quot;" />
+    </Then>
+  </Logic>
+
+  <Logic name="Check for females" priority="10">
+    <And>
+      <Check value='person.Sex == "Female"'/>
+      <Validate logic="IllegalAge"/>
+    </And>
+    <Then>
+      <Var name="message" value="&quot;message from lorwer priority&quot;" />
+    </Then>
+  </Logic>
+
+</Decision>

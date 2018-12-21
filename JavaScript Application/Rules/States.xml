@@ -1,0 +1,96 @@
+<DecisionTable name="States">
+    <Declaration>
+        <Define name="country" direction="In" />
+        <Define name="states" direction="Out" value="array()" />
+    </Declaration>
+    <Columns>
+        <Condition name="Country" expression="country" />
+        <Action name="States" expression="states|add($value)" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value>Australia</Value>
+            <Value>New South Wales</Value>
+        </Row>
+        <Row>
+            <Value>Australia</Value>
+            <Value>Queensland</Value>
+        </Row>
+        <Row>
+            <Value>Australia</Value>
+            <Value>Victoria</Value>
+        </Row>
+        <Row>
+            <Value>Australia</Value>
+            <Value>Western Australia</Value>
+        </Row>
+        <Row>
+            <Value>Australia</Value>
+            <Value>South Australia</Value>
+        </Row>
+        <Row>
+            <Value>Australia</Value>
+            <Value>Tasmania</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Auckland</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Wellington</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Christchurch</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Hamilton</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Tauranga</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Napier-Hasting</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Dunedin</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Palmerston North</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Nelson</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Rotorua</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>New Plymouth</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Whangarei</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Invercargill</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Whanganui</Value>
+        </Row>
+        <Row>
+            <Value>New Zealand</Value>
+            <Value>Gisborne</Value>
+        </Row>
+    </Data>
+</DecisionTable>

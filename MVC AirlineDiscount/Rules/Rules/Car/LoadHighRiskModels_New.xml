@@ -1,0 +1,8 @@
+<Procedure name="LoadHighRiskModels" enabled="True">
+  <Declaration>
+    <Define name="probList" direction="Out" />
+  </Declaration>
+  <Database connection="Data Source=.\SqlExpress;Initial Catalog=Car-Insurance;User ID=sa;Password=123;MultipleActiveResultSets=True" type="MsSql">
+    <SelectList command="select ([Made]+'-'+[Model]) as Car from [dbo].[HighRiskCars]" return="probList" multi="True" />
+  </Database>
+</Procedure>

@@ -1,0 +1,15 @@
+<Natural name="rule name">
+    <Dsl>input FRD;
+
+when main
+then
+	FRD.ShowProjectProperties("Runtime");
+	/*FRD.Debugger.Stop() and
+	FRD.OpenDocument('RuleFlow-with-Validation.xml') and
+	FRD.Debugger.Run('Rule', 'RuleFlow-with-Validation.xml', 
+				'TestData\\flow-input-invalid-data.xml', 'input') and
+	FRD.ShowWindow('notifications')*/
+end
+
+</Dsl>
+</Natural>

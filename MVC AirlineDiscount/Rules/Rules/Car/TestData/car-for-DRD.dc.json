@@ -1,0 +1,40 @@
+[
+  {
+    "Name": null,
+    "Assembly": "Car.Library.dll",
+    "Type": "FlexRule.Samples.CarInsurance.Car",
+    "Object": {
+      "Model": "IX35",
+      "Price": 27000.0,
+      "BasePremium": 0.0,
+      "AutoPremium": 0.0,
+      "Style": 2,
+      "ModelYear": 2007,
+      "HasRollBar": false,
+      "Convertible": true,
+      "Age": 0,
+      "HasMedicalCoverage": false,
+      "UninsuredMotoristCoverage": false,
+      "OccupantInjuryCategory": 3,
+      "TheftCategory": 3,
+      "Airbags": 3,
+      "Made": "Hyundai"
+    },
+    "IsParameterList": false
+  },
+  {
+    "Name": null,
+    "Assembly": null,
+    "Type": "System.Collections.Generic.List`1[[FlexRule.Designer.Debugger.Parameter, FlexRule.Designer.Debugger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92]]",
+    "Object": [
+      {
+        "Name": null,
+        "Assembly": null,
+        "Type": "System.String",
+        "Object": "Hyundai-IX35",
+        "IsParameterList": false
+      }
+    ],
+    "IsParameterList": true
+  }
+]

@@ -1,0 +1,16 @@
+﻿@model AirlineDiscount.Models.ErrorResult
+
+<big>
+    <span style="color:red"><b class="glyphicon glyphicon-remove-circle"></b> We could not process your request.</span>
+    <br />We identified some errors related to your request. Please find details of issue bellow:<br />
+</big>
+<br />
+
+<p>
+    @{
+        foreach (AirlineDiscount.Models.ErrorResult.Message item in Model.Messages)
+        {
+            <b style="color:Red" class="glyphicon glyphicon-arrow-right"></b> @item.Type<b>:</b> @item.Error<br />
+        }
+    }
+</p>

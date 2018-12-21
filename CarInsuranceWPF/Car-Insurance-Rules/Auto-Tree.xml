@@ -1,0 +1,43 @@
+<Validation name="Auto Premium" enabled="True">
+    <Declaration>
+        <Define name="car" direction="In" />
+    </Declaration>
+    <Logic name="Main">
+        <Or>
+            <Validate negate="False" logic="Compact" />
+            <Validate logic="Sedan" />
+            <Validate logic="Luxury" />
+        </Or>
+    </Logic>
+    <Logic name="Compact">
+        <Or>
+            <Check negate="True" value="car.Style=='Compact'" />
+            <And negate="True">
+                <Check negate="False" value="car.Model == 'abcd'" />
+                <Check value="car.Year == '1999'" />
+            </And>
+            <Not>
+                <Check value="car.Year==2002" />
+            </Not>
+        </Or>
+        <Then>
+            <Var value="car.AutoPremium += 250" />
+        </Then>
+    </Logic>
+    <Logic name="Sedan">
+        <And>
+            <Check value="car.Style=='Sedan'" />
+        </And>
+        <Then>
+            <Var value="car.AutoPremium += 400" />
+        </Then>
+    </Logic>
+    <Logic name="Luxury">
+        <And>
+            <Check value="car.Style=='Luxury'" />
+        </And>
+        <Then>
+            <Var value="car.AutoPremium += 400" />
+        </Then>
+    </Logic>
+</Validation>

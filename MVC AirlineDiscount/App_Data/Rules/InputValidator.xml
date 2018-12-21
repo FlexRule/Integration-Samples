@@ -1,0 +1,21 @@
+﻿<Validation name="input check">
+  <Declaration>
+    <Define name="input" direction="in"/>
+  </Declaration>
+  <Logic name="main">
+    <And processAll="true">
+      <Null negate="true" value="input.Birthday" message="Birthday cannot be null or empty"/>
+      <Null negate="true" value="input.Departure" message="Departure cannot be null or empty"/>
+      <Null negate="true" value="input.Return" message="Return cannot be null or empty"/>
+      <Or negate="true" message="Destination cannot be null or empty">
+        <Null value="input.Destination" />
+        <Empty value="input.Destination" />
+      </Or>
+      <Check value="input.Return gt input.Departure" message="Retrun must happen after your Departure date"/>
+      <And message="Return and Departure date must be after Birthday">
+        <Check value="input.Departure gt input.Birthday"/>
+        <Check value="input.Return gt input.Birthday"/>
+      </And>
+    </And>
+  </Logic>
+</Validation>

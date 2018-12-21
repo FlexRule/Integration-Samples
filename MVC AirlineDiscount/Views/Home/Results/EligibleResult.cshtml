@@ -1,0 +1,14 @@
+﻿@model AirlineDiscount.Models.DiscountResult
+<big style="color:green">
+    <b class="glyphicon glyphicon-thumbs-up"></b>
+    Congratulations!<br />
+</big>
+<p>
+    You are eligible for <strong>@Model.Discount%</strong> discount.
+</p>
+<div class="well">
+    From '@Model.Departure.ToShortDateString()' To '@Model.Return.ToShortDateString()'<br />
+    Destination: @Model.Destination<br/>
+    Discount: @Model.Discount%
+</div>
+

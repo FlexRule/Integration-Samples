@@ -1,0 +1,26 @@
+<Workflow name="WorkflowWorkflow Pause" version="1.0.0.0">
+  <Declaration>
+    <Define name="letter" direction="InOut" />
+    <Define name="state" direction="Out" />
+  </Declaration>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition1" to="AskTitle" expression="state='Title'"/>
+    </Start>
+    <Suspend name="AskTitle">
+      <Transition name="Transition2" to="Decision1" />
+    </Suspend>
+    <Decision name="Decision1">
+      <Transition name="Transition3" to="AskTitle" condition="letter.Title is null or letter.Title is empty" />
+      <Transition name="Transition4" to="AskBody" expression="state='Body'"/>
+    </Decision>
+    <Suspend name="AskBody">
+      <Transition name="Transition5" to="Decision2" />
+    </Suspend>
+    <Decision name="Decision2">
+      <Transition name="Transition6" to="End1" />
+      <Transition name="Transition7" to="AskBody" condition="letter.Body is null or letter.Body is empty" />
+    </Decision>
+    <End name="End1" />
+  </Nodes>
+</Workflow>

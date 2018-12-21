@@ -1,0 +1,19 @@
+<Glossary name="Rating Glossary">
+    <Declaration>
+        <Define name="car" direction="In" />
+    </Declaration>
+    <Term name="Price" expression="car.Price" domain="Numeric" />
+    <Term name="Car is listed in HTPA" expression="probList.Contains(car.Made+'-'+car.Model)" domain="Boolean" />
+    <Term name="Theft Rating" expression="car.TheftCategory" domain="Options">
+        <Option value="High" />
+        <Option value="Low" />
+        <Option value="Moderate" />
+    </Term>
+    <Term name="Car is Convertible" expression="car.Convertible" domain="Boolean" />
+    <Term name="Has Driver's Airbag" expression="car.Airbags |contains(Driver)" domain="Boolean" />
+    <Term name="Has Front Passenger's Airbag" expression="car.Airbags |contains(FrontPassenger)" domain="Boolean" />
+    <Term name="Has Side Panel Airbag" expression="car.Airbags |contains(SidePanel)" domain="Boolean" />
+    <Term name="Has Roll bar" expression="car.HasRollBar" domain="Boolean" />
+    <Term name="Is Convertible" expression="car.Convertible" domain="Boolean" />
+    <Term name="Set Occupant Injury Rating" expression="car.OccupantInjuryCategory" domain="Boolean" />
+</Glossary>

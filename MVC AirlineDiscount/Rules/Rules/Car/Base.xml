@@ -1,0 +1,34 @@
+<DecisionTable name="Calculate base premium" processAll="True">
+    <Declaration>
+        <Define name="car" direction="In" />
+        <Using path="FlexRule.Samples.CarInsurance.CarStyle" assembly="Car.Library.dll" />
+        <Using path="System.DateTime" />
+    </Declaration>
+    <Columns>
+        <Condition name="Car Type" expression="car.Style" />
+        <Action name="BasePremium" expression="car.BasePremium" />
+        <Name name="Rule Name" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value></Value>
+            <Value>= 0</Value>
+            <Value>R1</Value>
+        </Row>
+        <Row>
+            <Value>Compact</Value>
+            <Value>+= 250</Value>
+            <Value>R2</Value>
+        </Row>
+        <Row>
+            <Value>Sedan</Value>
+            <Value>+= 400</Value>
+            <Value>R3</Value>
+        </Row>
+        <Row>
+            <Value>Luxury</Value>
+            <Value>+= 500</Value>
+            <Value>R4</Value>
+        </Row>
+    </Data>
+</DecisionTable>

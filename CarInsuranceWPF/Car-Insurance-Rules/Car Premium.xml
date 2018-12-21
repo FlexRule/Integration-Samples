@@ -1,0 +1,34 @@
+<DRD name="Premium DRD">
+    <Nodes>
+        <Decision name="Premium" contextMode="Shared" />
+        <Decision name="Determain Rating" contextMode="Shared">
+            <Transition name="Transition8" to="Auto Premium" relationType="Information" />
+        </Decision>
+        <BusinessKnowledge name="Define Potential Theft Rating" type="NaturalLanguage" uri="PotentialTheftRating-NL.xml" contextMode="Shared">
+            <Transition name="Transition3" to="Determain Rating" relationType="Knowledge" />
+        </BusinessKnowledge>
+        <BusinessKnowledge name="Define Potential Occupant Injury Rating" metadataTemplate="Knowledge Source" uri="PotentialOccupantInjuryRating.xml" contextMode="Shared">
+            <Transition name="Transition4" to="Determain Rating" relationType="Knowledge" />
+        </BusinessKnowledge>
+        <KnowledgeSource name="KnowledgeSource1" contextMode="Shared">
+            <Transition name="Transition5" to="Premium" relationType="Authority" />
+        </KnowledgeSource>
+        <Decision name="Auto Premium" uri="Auto-no-style.xml" contextMode="Shared">
+            <Transition name="Transition7" to="Premium" relationType="Information" />
+        </Decision>
+        <Decision name="Base Premium" uri="Base.xml" contextMode="Shared">
+            <Transition name="Transition6" to="Premium" relationType="Information" />
+        </Decision>
+        <InputData name="car" isOutput="True">
+            <Transition name="Transition9" to="Determain Rating" relationType="Information" />
+            <Transition name="Transition11" to="Base Premium" relationType="Information" />
+            <Transition name="Transition14" to="Decision5" relationType="Information" />
+        </InputData>
+        <InputData name="probList">
+            <Transition name="Transition12" to="Determain Rating" relationType="Information" />
+        </InputData>
+        <Decision name="Decision5" type="Tree" uri="Auto-Tree.xml" contextMode="Shared">
+            <Transition name="Transition15" to="Auto Premium" relationType="Information" />
+        </Decision>
+    </Nodes>
+</DRD>

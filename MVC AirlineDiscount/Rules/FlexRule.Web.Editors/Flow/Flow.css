@@ -1,0 +1,23 @@
+.toolbox {
+    background-color: #939393;
+    /*width: 15em;
+    background-color: #939393;
+    padding: .2em;
+    padding-top: .1em;
+    border-radius: 5px;*/
+}
+
+    .toolbox .ui-accordion .ui-accordion-header {
+        padding: initial;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+.draggable {
+    width: auto;
+    /*height: 20px;*/
+    /*margin: 2px;*/
+    /*background: gray;
+    color: white;*/
+    cursor: move;
+}

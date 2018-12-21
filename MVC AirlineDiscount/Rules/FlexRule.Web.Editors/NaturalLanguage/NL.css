@@ -1,0 +1,73 @@
+﻿.CodeMirror-hints {
+    max-height: 10em;
+}
+
+.cm-term {
+    color: #d2691e;
+}
+.cm-whenParam {
+    color: deeppink;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.cm-s-default .cm-keyword {
+    color: blue;
+}
+
+.cm-s-default .cm-atom {
+    color: #219;
+}
+
+.cm-s-default .cm-comment {
+    color: green;
+}
+
+.cm-s-default .cm-operator {
+    color: darkcyan;
+}
+
+.cm-s-default .cm-variable-2 {
+    color: deepskyblue;
+}
+
+.cm-s-default .cm-def {
+    color: #708;
+}
+
+.cm-s-default .cm-meta {
+    color: darkred;
+}
+/*.CodeMirror {
+              border: 1px solid #eee;
+
+            }*/
+.CodeMirror {
+    height: 400px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    overflow: auto;
+    font-family: inherit;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    font-family: monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.CodeMirror-focused {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}

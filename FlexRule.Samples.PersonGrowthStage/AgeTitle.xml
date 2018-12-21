@@ -1,0 +1,44 @@
+<DecisionTable name="person growing state">
+  <Declaration>
+    <Define name="person" direction="In" />
+    <Define name="title" direction="Out" />
+  </Declaration>
+  <Columns>
+    <Condition name="Min" expression="person.Age&gt;=$value" />
+    <Condition name="Max" expression="person.Age&lt;=$value" />
+    <Action name="Title" expression="title" />
+    <Name />
+  </Columns>
+  <Data>
+    <Row>
+      <Value>0</Value>
+      <Value>3</Value>
+      <Value>infant</Value>
+      <Value>r1</Value>
+    </Row>
+    <Row>
+      <Value>4</Value>
+      <Value>6</Value>
+      <Value>kid</Value>
+      <Value>r2</Value>
+    </Row>
+    <Row>
+      <Value>7</Value>
+      <Value>18</Value>
+      <Value>teen</Value>
+      <Value>r3</Value>
+    </Row>
+    <Row>
+      <Value>19</Value>
+      <Value>23</Value>
+      <Value>young</Value>
+      <Value>r4</Value>
+    </Row>
+    <Row>
+      <Value>24</Value>
+      <Value />
+      <Value>adult</Value>
+      <Value>r5</Value>
+    </Row>
+  </Data>
+</DecisionTable>

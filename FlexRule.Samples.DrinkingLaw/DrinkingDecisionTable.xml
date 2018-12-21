@@ -1,0 +1,40 @@
+<DecisionTable name="Drink">
+    <Declaration>
+        <Define name="person" direction="In" />
+        <Define name="canDrink" direction="Out" />
+    </Declaration>
+    <Columns>
+        <Condition name="Age" expression="person.Age" />
+        <Condition name="Sex" expression="person.Sex" />
+        <Condition name="Pregnant" expression="person.Pregnant" />
+        <Action name="Can Drink" expression="canDrink" />
+        <Action name="Error" expression="$value" type="Notice" notice="Error" />
+        <Action name="Message" expression="$value" type="Notice" notice="Information" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value>&lt;18</Value>
+            <Value />
+            <Value />
+            <Value>false</Value>
+            <Value>{person.Name}! you cannot drink, because you are younger than 18!</Value>
+            <Value></Value>
+        </Row>
+        <Row>
+            <Value />
+            <Value>Female</Value>
+            <Value>true</Value>
+            <Value>false</Value>
+            <Value>Come on! {person.Name} you are pregnant.</Value>
+            <Value></Value>
+        </Row>
+        <Row>
+            <Value>&gt;18</Value>
+            <Value />
+            <Value>false</Value>
+            <Value>true</Value>
+            <Value />
+            <Value>Cheers!</Value>
+        </Row>
+    </Data>
+</DecisionTable>

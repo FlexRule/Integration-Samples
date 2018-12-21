@@ -1,0 +1,19 @@
+<DecisionTable name="YearDiscount" processAll="False">
+    <Declaration>
+        <Define name="car" direction="In" />
+    </Declaration>
+    <Columns>
+        <Condition name="Year" expression="car.Year" />
+        <Action name="Discount" expression="car.Discount" />
+    </Columns>
+    <Data>
+        <Row>
+            <Value>ge 2014</Value>
+            <Value>0.1</Value>
+        </Row>
+        <Row>
+            <Value />
+            <Value>0</Value>
+        </Row>
+    </Data>
+</DecisionTable>

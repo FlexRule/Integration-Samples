@@ -1,0 +1,40 @@
+﻿<Concept namespace="sample concept">
+  <Fact name="Person">
+    <Property name="Name" type="string" />
+    <Property name="Family" type="string">
+      <Constraints>
+        <Add type="Required" message="member Family is required"/>
+        <Add type="NotNullOrEmpty" message="member Family cannot be null or empty"/>
+      </Constraints>
+    </Property>
+    <Property name="Address" fact="Address">
+      <Constraints>
+        <Add type="Required" message="member address is required"/>
+        <Add type="NotNullOrEmpty" message="member address cannot be null or empty"/>
+        <!-- CheckType constraint will propagate the check to fact named Address -->
+        <Add type="CheckType" message="Invalid address type"/>
+      </Constraints>
+    </Property>
+    <Property name="Email" type="string" isArray="True">
+      <Constraints>
+        <Add type="Required" message="Email field is required"/>
+        <Add type="NotNullOrEmpty" message="Email cannot be null or empty"/>
+        <Add type="Match" value="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" message="Email format is invalid."/>
+      </Constraints>
+    </Property>
+  </Fact>
+  <Fact name="Address">
+    <Property name="Line1" type="string">
+      <Constraints>
+        <Add type="Required" message="member Line1 is required"/>
+        <Add type="NotNullOrEmpty" message="member Line1 cannot be null or empty"/>
+      </Constraints>
+    </Property>
+    <Property name="State" type="string">
+      <Constraints>
+        <Add type="Required" message="member Postcode is required"/>
+        <Add type="NotNullOrEmpty" message="member Postcode cannot be null or empty"/>
+      </Constraints>
+    </Property>
+  </Fact>
+</Concept>

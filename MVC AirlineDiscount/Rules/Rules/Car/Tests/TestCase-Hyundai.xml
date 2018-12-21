@@ -1,0 +1,15 @@
+<TestCase name="Sample TestCase" logicFile="DRD-With-Tree-NL.xml">
+	<Section name="Rules">
+		<Test name="Car Premiums" source="D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Samples\Car.rules.DMN - Full\TestData\car-for-DRD.dc.json" dataProvider="DataComposer">
+			<AssertTrue expression="$actual.AutoPremium == 1450" scope="Parameter" parameterName="car" name="Auto Premium" />
+			<AssertTrue expression="$actual.BasePremium == 250" scope="Parameter" parameterName="car" name="Base Premium" />
+		</Test>
+	</Section>
+	<Section name="Inputs">
+		<Test name="Car" source="D:\Arash All Works\MY_PRG\FlexRule\Designer\Mainline\Samples\Car.rules.DMN - Full\TestData\car-for-DRD.dc.json" dataProvider="DataComposer">
+			<AssertTrue expression="$actual.Model == 'IX35'" scope="Parameter" parameterName="car" name="Model" />
+			<AssertTrue expression="$actual.Airbags == &quot;Driver, FrontPassenger&quot;" scope="Parameter" parameterName="car" name="Airbags" />
+			<AssertTrue expression="$actual.Price == 27000" scope="Parameter" parameterName="car" name="Price" />
+		</Test>
+	</Section>
+</TestCase>

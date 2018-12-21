@@ -1,0 +1,52 @@
+<Designer>
+    <Project>
+        <Name>CaseHandling</Name>
+        <Path>D:\Pliant Framework\FlexRule\6.4.345\Samples\CaseHandling\FlexRule.Samples.CaseHandling.Server</Path>
+        <Description>The workflow project to case handling</Description>
+        <Folders>
+            <Path>Definitions</Path>
+        </Folders>
+    </Project>
+    <Files>
+        <Add rule="Definitions\CaseHandlingWorkflow.xml" help="CaseHandlingWorkflow.xml" handler="FlexRule.Designer.RuleFlow.WorkflowFormHandler, FlexRule.Designer.FlowEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" uid="f5b6dbb2-5a03-4e5d-b608-1a222a5e6d2d" />
+        <Add rule="Definitions\Glossary.xml" help="Glossary.xml" handler="FlexRule.Designer.DMN.BoxedExpressionFormHandler, FlexRule.Designer.DMN, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dade78f156180a92" uid="d5c10571-a257-480c-bd5d-23c2607b5358" />
+    </Files>
+    <References></References>
+    <ProjectProviders>
+        <Builders>
+            <Add assembly="FlexRule.Designer.ProceduralEngine.dll" type="FlexRule.Designer.ProceduralEngine.ElementItemBuilderBuiltinElementStrategy" description="Default commands of procedural rule" />
+            <Add assembly="FlexRule.Designer.FlowEngine.dll" type="FlexRule.Designer.RuleFlow.ElementItemBuilderBuiltinElementStrategy" description="Default nodes of RuleFlow engine" />
+            <Add assembly="FlexRule.Designer.ValidationEngine.dll" type="FlexRule.Designer.ValidationEngine.ValidationEngineBuilderStrategy" description="Validation rule document" />
+            <Add assembly="FlexRule.Designer.ValidationEngine.dll" type="FlexRule.Designer.ValidationEngine.ValidatorBuilderStrategy" description="Validation engine 'Validator' command" />
+            <Add assembly="FlexRule.Designer.Core.dll" type="FlexRule.Designer.Notifications.NotificationBuilderStrategy" description="Notification command" />
+            <Add assembly="FlexRule.Designer.Deployment.dll" type="FlexRule.Designer.Deployment.DeploymentBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DecisionTable.dll" type="FlexRule.Designer.DecisionTable.ElementItemBuilderBuiltinElementStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DecisionTable.dll" type="FlexRule.Designer.DecisionTable.CallDecisionTableBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.Database.dll" type="FlexRule.Designer.Database.DatabaseBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.DecisionReqDiagramBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.CallDrdBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.FlowEngine.dll" type="FlexRule.Designer.RuleFlow.CallFlowBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.NaturalLanguage.dll" type="FlexRule.Designer.NaturalLanguage.CallNaturalLanguageBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.Tester.dll" type="FlexRule.Designer.Tester.TesterBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.NaturalLanguage.dll" type="FlexRule.Designer.NaturalLanguage.ElementItemBuilderBuiltinElementStrategy" description="" />
+            <Add assembly="FlexRule.Designer.ResourceEditor.dll" type="FlexRule.Designer.ResourceEditor.Messages.ElementItemBuilderBuiltinElementStrategy" description="" />
+            <Add assembly="FlexRule.Designer.Database.dll" type="FlexRule.Designer.Database.DataBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.InformationReqDiagramBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.IRD.CallIrdBuilderStrategy" description="" />
+            <Add assembly="FlexRule.Designer.DMN.dll" type="FlexRule.Designer.DMN.BoxedExpressionBuilderStrategy" description="" />
+        </Builders>
+    </ProjectProviders>
+    <TreeDocument>
+        <FollowIdent value="False" />
+        <ShowAttribute value="True" />
+        <ShowDescription value="True" />
+        <ShowType value="True" />
+        <ShowValue value="True" />
+        <ShowTreeLines value="True" />
+        <ShowGridLines value="True" />
+    </TreeDocument>
+    <Debugger>
+        <Runtime path="D:\Pliant Framework\FlexRule\5.6.154\framework" />
+        <License path="D:\Pliant Framework\FlexRule\5.6.154\framework\flexrule.license.lic" />
+    </Debugger>
+</Designer>

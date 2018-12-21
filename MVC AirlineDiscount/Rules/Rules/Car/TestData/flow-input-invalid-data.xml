@@ -1,0 +1,13 @@
+<Procedure name="data" enabled="True">
+  <Declaration>
+    <Define name="input" direction="Out" />
+    <Define name="car" direction="Local" />
+  </Declaration>
+  <Array name="input">
+    <New name="car" assembly="Car.Library.dll" type="FlexRule.Samples.CarInsurance.Car" />
+  </Array>
+  <Var name="car" value="6" path="Airbags" />
+  <Var name="car" value="2017" path="ModelYear" />
+  <Var name="car" value="'Compact'" path="Style" />
+  <Var name="car" value="27000" path="Price" />
+</Procedure>

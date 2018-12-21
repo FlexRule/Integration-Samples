@@ -1,0 +1,66 @@
+<Flow name="process1" version="1.0.0.0">
+    <Declaration>
+        <Define name="StarQty" direction="In" />
+        <Define name="GoldQty" direction="In" />
+        <Define name="SilverQty" direction="In" />
+        <Define name="DeliveryTotal" direction="Out" value="0.0" />
+    </Declaration>
+    <Nodes>
+        <Start name="start">
+            <Transition name="Transition10" to="Decision1" />
+        </Start>
+        <Split name="split0" type="All">
+            <Transition name="tr1" to="nodeCalcWeight" priority="1" />
+            <Transition name="tr2" to="nodeCalcDiscount" priority="2" />
+        </Split>
+        <Activity name="nodeCalcWeight">
+            <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                <ProcSource uri="Rules/Ver3/CalculateWeights.xml" />
+            </CallProc>
+            <Transition name="tr3" to="calcDone" />
+        </Activity>
+        <Activity name="nodeCalcDiscount">
+            <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                <ProcSource uri="Rules/Ver3/QuantityDiscount.xml" />
+            </CallProc>
+            <Transition name="tr4" to="calcDone" />
+        </Activity>
+        <Join name="calcDone" type="AllOf">
+            <Transition name="Transition14" to="nodeDelivery" />
+        </Join>
+        <Activity name="calcSubTotal">
+            <CallProc contextMode="Shared" resultCopyMode="AddOut">
+                <ProcSource uri="Rules/Ver3/CalculatePriceSubTotal.xml" />
+            </CallProc>
+            <Transition name="Transition16" to="nodeWriteNotice" />
+        </Activity>
+        <End name="end" />
+        <Decision name="Decision1">
+            <Transition name="Transition11" to="split0" condition="StarQty&gt;=3" />
+            <Transition name="Transition13" to="Assign1" condition="StarQty&lt;3" />
+        </Decision>
+        <Assign name="Assign1">
+            <Var name="StarQty" value="3" />
+            <Transition name="Transition19" to="nodeNoticeMinimum" />
+        </Assign>
+        <Activity name="nodeDelivery">
+            <CallDecisionTable contextMode="Shared">
+                <DecisionTableSource uri="Rules/Ver3/Delivery.xml" />
+            </CallDecisionTable>
+            <Transition name="Transition15" to="calcSubTotal" />
+        </Activity>
+        <Activity name="nodeWriteNotice">
+            <Notification>
+                <Notice message="Payable amount on invoice is '{PriceSubTotal}'." type="Information" />
+                <Notice message="The payable amount includes '{DeliveryTotal}' devlidery charge." type="Warning" />
+            </Notification>
+            <Transition name="Transition18" to="end" />
+        </Activity>
+        <Activity name="nodeNoticeMinimum">
+            <Notification>
+                <Notice message="Minimum amount is set: Invoice cannot have less than 3 quantity of 'Start' item." type="Error" />
+            </Notification>
+            <Transition name="Transition20" to="split0" />
+        </Activity>
+    </Nodes>
+</Flow>

@@ -1,0 +1,65 @@
+<Natural name='Potential Occupant Injury Rating'>
+  <Declaration>
+    <Define name='car' direction='In'/><Using path='FlexRule.Samples.CarInsurance.AirbagType' assembly='Car.Library.dll'/>
+  </Declaration>
+  <Glossary>
+    <GlossarySource uri='Glossaries\Rating-BusinessGlossary.xml'/>
+  </Glossary>
+  <Dsl>input car  
+
+when 
+@processAll false
+
+&#x9;r1 or
+&#x9;r2 or
+&#x9;r3 or
+&#x9;r4 or
+&#x9;r5
+end
+
+
+when r1
+&#x9;Has Driver's Airbag and
+&#x9;Has Front Passenger's Airbag is false and
+&#x9;Has Side Panel Airbag is false
+then
+&#x9;Occupant Injury Rating is ExtremelyHigh and
+    increase Auto Premium for (200) amount
+end
+
+when increase Auto Premium for {amt} amount
+&#x9;Auto Premium += amt
+end
+
+when r2
+&#x9;Has Driver's Airbag and
+&#x9;Has Front Passenger's Airbag and
+&#x9;Has Side Panel Airbag is false
+then
+&#x9;Occupant Injury Rating is Moderate
+end
+
+
+when r3
+&#x9;Has Front Passenger's Airbag and
+&#x9;Has Side Panel Airbag 
+then
+&#x9;Occupant Injury Rating is Low
+end
+
+
+when r4
+&#x9;Has Roll bar is false and
+&#x9;Is Convertible
+then
+&#x9;Occupant Injury Rating is ExtremelyHigh
+end
+
+when r5
+then
+&#x9;Occupant Injury Rating is ExtremelyHigh
+end
+
+
+
+</Dsl></Natural>

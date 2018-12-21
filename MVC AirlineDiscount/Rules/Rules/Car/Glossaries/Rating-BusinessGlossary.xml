@@ -1,0 +1,27 @@
+<Glossary name="Rating Glossary">
+  <Declaration>
+    <Define name="car" type="FlexRule.Samples.CarInsurance.Car" assembly="Car.Library.dll" direction="In" />
+  </Declaration>
+  <Term name="Price" expression="car.Price" domain="Numeric" />
+  <Term name="Car is listed in HTPA" expression="probList.Contains(car.Made+'-'+car.Model)" domain="Boolean" />
+  <Term name="Theft Rating" expression="car.TheftCategory" domain="Options">
+    <Option value="ExtremelyHigh" />
+    <Option value="High" />
+    <Option value="Low" />
+    <Option value="Moderate" />
+  </Term>
+  <Term name="Car is Convertible" expression="car.Convertible" domain="Boolean" />
+  <Term name="Has Driver's Airbag" expression="car.Airbags.HasFlag(AirbagType.Driver)" domain="Boolean" />
+  <Term name="Has Front Passenger's Airbag" expression="car.Airbags.HasFlag(AirbagType.FrontPassenger)" domain="Boolean" />
+  <Term name="Has Side Panel Airbag" expression="car.Airbags.HasFlag(AirbagType.SidePanel)" domain="Boolean" />
+  <Term name="Has Roll bar" expression="car.HasRollBar" domain="Boolean" />
+  <Term name="Is Convertible" expression="car.Convertible" domain="Boolean" />
+  <Term name="Auto Premium" expression="car.AutoPremuim" domain="Numeric" />
+  <Term name="Base Premuim" expression="car.BasePremuim" domain="Numeric" />
+  <Term name="Occupant Injury Rating" expression="car.OccupantInjuryCategory" domain="Options">
+    <Option value="ExtremelyHigh" />
+    <Option value="High" />
+    <Option value="Low" />
+    <Option value="Moderate" />
+  </Term>
+</Glossary>

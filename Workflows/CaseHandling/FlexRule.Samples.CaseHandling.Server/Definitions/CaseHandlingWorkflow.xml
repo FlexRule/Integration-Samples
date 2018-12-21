@@ -1,0 +1,55 @@
+<Workflow name="CaseHandling" namespace="http://org/helpdesk" version="1.0.0.0">
+  <Declaration>
+    <Define name="repository" direction="In" />
+    <Define name="case" direction="In" />
+    <Define name="assignment" direction="In" />
+  </Declaration>
+  <Glossary>
+    <GlossarySource uri="Glossary.xml" />
+  </Glossary>
+  <Nodes>
+    <Start name="Start1">
+      <Transition name="Transition1" to="Activity1" />
+    </Start>
+    <End name="End1" />
+    <Activity name="Activity1" expression="AssignCaseToUser">
+      <Transition name="Transition2" to="ListenerSplit1" />
+    </Activity>
+    <ListenerSplit name="ListenerSplit1">
+      <Transition name="Transition3" to="ScopeTimeout" priority="1" />
+      <Transition name="Transition4" to="ScopeAccept" priority="2" />
+    </ListenerSplit>
+    <ListenerJoin name="ListenerJoin1">
+      <Transition name="Transition7" to="Decision1" />
+    </ListenerJoin>
+    <Scope name="ScopeTimeout" initialNode="Timeout1" finalNode="AssignActivity">
+      <Nodes>
+        <Timeout name="Timeout1" title="TimeoutInMiute" namespace="http://helpdesk/CaseHandling" timeout="00:01:00">
+          <Transition name="Transition21" to="DeactivateActivity" />
+        </Timeout>
+        <Activity name="DeactivateActivity" expression="DeactivateAssignment">
+          <Transition name="Transition22" to="AssignActivity" />
+        </Activity>
+        <Activity name="AssignActivity" expression="AssignCaseToManager" />
+      </Nodes>
+      <Transition name="DelayedTransition" to="ListenerJoin1" />
+    </Scope>
+    <Scope name="ScopeAccept" initialNode="AcceptAction" finalNode="DeactivateActivity1">
+      <Nodes>
+        <Task name="AcceptAction" namespace="http://helpdesk/CaseHandling" title="Accept">
+          <Transition name="Transition19" to="Assign1" />
+        </Task>
+        <Assign name="Assign1">
+          <Var value="assignment.Accepted = now()" />
+          <Transition name="Transition17" to="DeactivateActivity1" />
+        </Assign>
+        <Activity name="DeactivateActivity1" expression="DeactivateAssignment" />
+      </Nodes>
+      <Transition name="AcceptedTransition" to="ListenerJoin1" />
+    </Scope>
+    <Decision name="Decision1">
+      <Transition name="Transition8" to="ListenerSplit1" condition="$context.History.Check(&quot;Decision1/Transition7/ListenerJoin1/DelayedTransition&quot;)" />
+      <Transition name="Transition9" to="End1" condition="$context.History.Check(&quot;Decision1/Transition7/ListenerJoin1/AcceptedTransition&quot;)" />
+    </Decision>
+  </Nodes>
+</Workflow>

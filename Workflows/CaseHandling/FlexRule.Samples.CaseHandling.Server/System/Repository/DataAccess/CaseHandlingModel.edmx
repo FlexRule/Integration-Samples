@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CaseHandlingDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CaseHandlingDatabaseModelStoreContainer">
+          <EntitySet Name="Assignments" EntityType="CaseHandlingDatabaseModel.Store.Assignments" store:Type="Tables" />
+          <EntitySet Name="Cases" EntityType="CaseHandlingDatabaseModel.Store.Cases" store:Type="Tables" />
+          <EntitySet Name="Officers" EntityType="CaseHandlingDatabaseModel.Store.Officers" store:Type="Tables" />
+          <AssociationSet Name="FK_CASEID_CASEREF" Association="CaseHandlingDatabaseModel.Store.FK_CASEID_CASEREF">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="Assignments" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagerID_ManagerRef" Association="CaseHandlingDatabaseModel.Store.FK_ManagerID_ManagerRef">
+            <End Role="Officers" EntitySet="Officers" />
+            <End Role="Officers1" EntitySet="Officers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficerID_OfficerRef" Association="CaseHandlingDatabaseModel.Store.FK_OfficerID_OfficerRef">
+            <End Role="Officers" EntitySet="Officers" />
+            <End Role="Assignments" EntitySet="Assignments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Assignments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Assigned" Type="datetime" />
+          <Property Name="Accepted" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OfficerID" Type="uniqueidentifier" />
+          <Property Name="CaseID" Type="uniqueidentifier" />
+          <Property Name="FlowInstanceID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Cases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Task" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Finished" Type="datetime" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientEmail" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Officers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ManagerID" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_CASEID_CASEREF">
+          <End Role="Cases" Type="CaseHandlingDatabaseModel.Store.Cases" Multiplicity="0..1" />
+          <End Role="Assignments" Type="CaseHandlingDatabaseModel.Store.Assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Assignments">
+              <PropertyRef Name="CaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagerID_ManagerRef">
+          <End Role="Officers" Type="CaseHandlingDatabaseModel.Store.Officers" Multiplicity="0..1" />
+          <End Role="Officers1" Type="CaseHandlingDatabaseModel.Store.Officers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Officers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Officers1">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficerID_OfficerRef">
+          <End Role="Officers" Type="CaseHandlingDatabaseModel.Store.Officers" Multiplicity="0..1" />
+          <End Role="Assignments" Type="CaseHandlingDatabaseModel.Store.Assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Officers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Assignments">
+              <PropertyRef Name="OfficerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CaseHandlingDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CaseHandlingDatabaseContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssignmentEntities" EntityType="CaseHandlingDatabaseModel.AssignmentEntity" />
+          <EntitySet Name="CaseEntities" EntityType="CaseHandlingDatabaseModel.CaseEntity" />
+          <EntitySet Name="OfficerEntities" EntityType="CaseHandlingDatabaseModel.OfficerEntity" />
+          <AssociationSet Name="FK_CASEID_CASEREF" Association="CaseHandlingDatabaseModel.FK_CASEID_CASEREF">
+            <End Role="Case" EntitySet="CaseEntities" />
+            <End Role="Assignment" EntitySet="AssignmentEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficerID_OfficerRef" Association="CaseHandlingDatabaseModel.FK_OfficerID_OfficerRef">
+            <End Role="Officer" EntitySet="OfficerEntities" />
+            <End Role="Assignment" EntitySet="AssignmentEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagerID_ManagerRef" Association="CaseHandlingDatabaseModel.FK_ManagerID_ManagerRef">
+            <End Role="Officer" EntitySet="OfficerEntities" />
+            <End Role="Officer1" EntitySet="OfficerEntities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AssignmentEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="DateTime" Name="Assigned" />
+          <Property Type="DateTime" Name="Accepted" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="CaseHandlingDatabaseModel.FK_CASEID_CASEREF" FromRole="Assignment" ToRole="Case" />
+          <NavigationProperty Name="Officer" Relationship="CaseHandlingDatabaseModel.FK_OfficerID_OfficerRef" FromRole="Assignment" ToRole="Officer" />
+          <Property Type="Guid" Name="FlowInstanceID" />
+        </EntityType>
+        <EntityType Name="CaseEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="Task" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Created" Nullable="false" />
+          <Property Type="DateTime" Name="Finished" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="CaseHandlingDatabaseModel.FK_CASEID_CASEREF" FromRole="Case" ToRole="Assignment" />
+          <Property Type="String" Name="ClientEmail" MaxLength="100" FixedLength="false" Unicode="true" Nullable="true" />
+        </EntityType>
+        <EntityType Name="OfficerEntity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Role" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="CaseHandlingDatabaseModel.FK_OfficerID_OfficerRef" FromRole="Officer" ToRole="Assignment" />
+          <NavigationProperty Name="TeamMembers" Relationship="CaseHandlingDatabaseModel.FK_ManagerID_ManagerRef" FromRole="Officer" ToRole="Officer1" />
+          <NavigationProperty Name="Manager" Relationship="CaseHandlingDatabaseModel.FK_ManagerID_ManagerRef" FromRole="Officer1" ToRole="Officer" />
+        </EntityType>
+        <Association Name="FK_CASEID_CASEREF">
+          <End Type="CaseHandlingDatabaseModel.CaseEntity" Role="Case" Multiplicity="0..1" />
+          <End Type="CaseHandlingDatabaseModel.AssignmentEntity" Role="Assignment" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_OfficerID_OfficerRef">
+          <End Type="CaseHandlingDatabaseModel.OfficerEntity" Role="Officer" Multiplicity="0..1" />
+          <End Type="CaseHandlingDatabaseModel.AssignmentEntity" Role="Assignment" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ManagerID_ManagerRef">
+          <End Type="CaseHandlingDatabaseModel.OfficerEntity" Role="Officer" Multiplicity="0..1" />
+          <End Type="CaseHandlingDatabaseModel.OfficerEntity" Role="Officer1" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CaseHandlingDatabaseModelStoreContainer" CdmEntityContainer="CaseHandlingDatabaseContext">
+          <EntitySetMapping Name="AssignmentEntities">
+            <EntityTypeMapping TypeName="CaseHandlingDatabaseModel.AssignmentEntity">
+              <MappingFragment StoreEntitySet="Assignments">
+                <ScalarProperty Name="FlowInstanceID" ColumnName="FlowInstanceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseEntities">
+            <EntityTypeMapping TypeName="CaseHandlingDatabaseModel.CaseEntity">
+              <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficerEntities">
+            <EntityTypeMapping TypeName="CaseHandlingDatabaseModel.OfficerEntity">
+              <MappingFragment StoreEntitySet="Officers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_CASEID_CASEREF" TypeName="CaseHandlingDatabaseModel.FK_CASEID_CASEREF" StoreEntitySet="Assignments">
+            <EndProperty Name="Assignment">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Case">
+              <ScalarProperty Name="ID" ColumnName="CaseID" />
+            </EndProperty>
+            <Condition ColumnName="CaseID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_OfficerID_OfficerRef" TypeName="CaseHandlingDatabaseModel.FK_OfficerID_OfficerRef" StoreEntitySet="Assignments">
+            <EndProperty Name="Assignment">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Officer">
+              <ScalarProperty Name="ID" ColumnName="OfficerID" />
+            </EndProperty>
+            <Condition ColumnName="OfficerID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ManagerID_ManagerRef" TypeName="CaseHandlingDatabaseModel.FK_ManagerID_ManagerRef" StoreEntitySet="Officers">
+            <EndProperty Name="Officer1">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Officer">
+              <ScalarProperty Name="ID" ColumnName="ManagerID" />
+            </EndProperty>
+            <Condition ColumnName="ManagerID" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CaseHandlingModel">
+        <EntityTypeShape EntityType="CaseHandlingDatabaseModel.AssignmentEntity" Width="1.5" PointX="2.875" PointY="0.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="CaseHandlingDatabaseModel.CaseEntity" Width="1.5" PointX="0.75" PointY="1.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="CaseHandlingDatabaseModel.OfficerEntity" Width="1.5" PointX="5.25" PointY="2.125" Height="1.7879850260416674" />
+        <AssociationConnector Association="CaseHandlingDatabaseModel.FK_CASEID_CASEREF" >
+          <ConnectorPoint PointX="2.25" PointY="2.2737939453125" />
+          <ConnectorPoint PointX="2.875" PointY="2.2737939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="CaseHandlingDatabaseModel.FK_OfficerID_OfficerRef" >
+          <ConnectorPoint PointX="5.25" PointY="2.5574446614583328" />
+          <ConnectorPoint PointX="4.375" PointY="2.5574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="CaseHandlingDatabaseModel.FK_ManagerID_ManagerRef" >
+          <ConnectorPoint PointX="5.7819230769230767" PointY="4.297587890625" />
+          <ConnectorPoint PointX="5.7819230769230767" PointY="4.547587890625" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="4.547587890625" />
+          <ConnectorPoint PointX="6.2284615384615378" PointY="4.297587890625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

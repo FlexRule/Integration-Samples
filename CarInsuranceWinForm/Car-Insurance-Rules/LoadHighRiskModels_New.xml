@@ -1,0 +1,15 @@
+<Procedure name="LoadHighRiskModels" enabled="True">
+    <Declaration>
+        <Define name="probList" direction="Out" />
+        <Using path="System.Collections.ArrayList"/>
+    </Declaration>
+    <!--In this demo we don't actually connect to database-->
+    <!--
+    <Database connection="Data Source=.\SqlExpress;Initial Catalog=Car-Insurance;User ID=sa;Password=123;MultipleActiveResultSets=True" type="MsSql">
+        <SelectList command="select ([Made]+'-'+[Model]) as Car from [dbo].[HighRiskCars]" return="probList" multi="True" />
+    </Database>
+    -->
+  <Var value="probList=new(ArrayList)"/>
+  <Var value="probList.Add('BMW-E63')"/>
+  <Var value="probList.Add('Hyundai-IX35')"/>
+</Procedure>

@@ -1,0 +1,36 @@
+﻿<Validation name="PersonValidation">
+  <Declaration>
+    <Define name="person" direction="in"/>
+  </Declaration>
+
+  <Logic name="complete person test">
+    <And processAll="true">
+      <Validate logic="basic validation" />
+      <Regex pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" value="person.Email"
+             message="Email '{0}' field is not valid" tag="InvalidEmail" >
+        <MessageFormatter>
+          <Param value="person.Email"/>
+        </MessageFormatter>
+      </Regex>
+      <Validate name="person address" logic="address validation" value="person.Address" when="person.Address!=null"/>
+    </And>
+  </Logic>
+
+  <!--This validation logic access 'person' for the checks -->
+  <Logic name="basic validation">
+    <And name="NameAndFamilyCheck" message="Name and family are required" processAll="true">
+      <Null value="person.Name" negate="true" message="Name null"/>
+      <Empty value="person.Name" negate="true" message="Name empty"/>
+      <Null value="person.Family" negate="true" message="Family null"/>
+      <Empty value="person.Family" negate="true" message="Family empty"/>
+    </And>
+  </Logic>
+
+  <!-- This validation logic defines an input parameter called 'addr' -->
+  <Logic name="address validation" variable="addr">
+    <And>
+      <Null value="addr.Line1" negate="true"/>
+      <Empty value="addr.Line1" negate="true"/>
+    </And>
+  </Logic>
+</Validation>

@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexRule.Samples.CaseHandling.Client", "Workflows\CaseHandling\FlexRule.Samples.CaseHandling.Client\FlexRule.Samples.CaseHandling.Client.csproj", "{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexRule.Samples.CaseHandling.Common", "Workflows\CaseHandling\FlexRule.Samples.CaseHandling.Common\FlexRule.Samples.CaseHandling.Common.csproj", "{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CaseHandling", "CaseHandling", "{8E836ACB-3935-4945-973D-DA3081598079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexRule.Samples.CaseHandling.Server", "Workflows\CaseHandling\FlexRule.Samples.CaseHandling.Server\FlexRule.Samples.CaseHandling.Server.csproj", "{DF55E705-A44F-4D77-A676-952A611E157B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexRule.Samples.CaseHandling.ConsoleServer", "Workflows\CaseHandling\FlexRule.Samples.CaseHandling.ConsoleServer\FlexRule.Samples.CaseHandling.ConsoleServer.csproj", "{7BDB57F8-4739-4783-B130-96B5BAB31ED2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37126CA3-6E1C-494E-B560-45AAA26C13E8}"
+	ProjectSection(SolutionItems) = preProject
+		Workflows\CaseHandling\Readme.txt = Workflows\CaseHandling\Readme.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Debug|x86.ActiveCfg = Debug|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Debug|x86.Build.0 = Debug|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Release|Any CPU.ActiveCfg = Release|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Release|Mixed Platforms.Build.0 = Release|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Release|x86.ActiveCfg = Release|x86
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261}.Release|x86.Build.0 = Release|x86
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DF55E705-A44F-4D77-A676-952A611E157B}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E53AB2A-2C4E-4871-9CA3-1A3D0A29C261} = {8E836ACB-3935-4945-973D-DA3081598079}
+		{DE6327E3-9734-4FB2-BE5F-2BECA03C1F09} = {8E836ACB-3935-4945-973D-DA3081598079}
+		{DF55E705-A44F-4D77-A676-952A611E157B} = {8E836ACB-3935-4945-973D-DA3081598079}
+		{7BDB57F8-4739-4783-B130-96B5BAB31ED2} = {8E836ACB-3935-4945-973D-DA3081598079}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FlexRule.Samples.Workflow.CaseHandling.vsmdi
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+<Natural name="rule name">
+  <Glossary>
+    <Term name="user is business analyst" expression="user.IsAnalyst" domain="Boolean" />
+    <Term name="Text" domain="String" />
+    <Term name="Boolean" domain="Boolean" />
+    <Term name="Date" domain="DateTime" />
+    <Term name="Range" domain="Range" />
+    <Term name="Number" domain="Numeric" />
+  </Glossary>
+  <Dsl>when r4
+	
+end
+ 
+when a
+	( 
+		Date is 
+		Range is 
+		Text not match 
+	) or 
+	Number is 
+	a is 
+end</Dsl>
+</Natural>
